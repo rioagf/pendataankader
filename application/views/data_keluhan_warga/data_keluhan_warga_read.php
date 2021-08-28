@@ -1,0 +1,58 @@
+<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('../../assets/img/8.jpg');background-size: cover; background-attachment: fixed;">
+    <div class="container" style="max-width: 850px; margin-bottom: 100px;">
+        <div class="intro">
+            <h2 class="text-center">Data Keluhan</h2>
+            <hr>
+        </div>
+        <div style="background-color: #ffffff !important; padding: 25px;">
+            <table class="table">
+                <tr>
+                    <th>Judul Keluhan</th>
+                    <td><?php echo $judul_keluhan; ?></td>
+                </tr>
+                <tr>
+                    <th>Deskripsi Keluhan</th>
+                    <td><?php echo $deskripsi_keluhan; ?></td>
+                </tr>
+                <tr>
+                    <th>Nama Pelapor</th>
+                    <td><?php echo $nama_lengkap; ?></td>
+                </tr>
+                <tr>
+                    <th>Tanggal Laporan</th>
+                    <td><?php echo date("d F Y", strtotime($date_created)); ?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a href="<?php echo site_url('data_keluhan_warga') ?>" class="btn btn-warning">Kembali</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+<nav class="navbar navbar-light navbar-expand fixed-bottom" style="background: rgba(66,0,98,0.5);box-shadow: 0px 2px 15px 0px;padding: 7px 2px;">
+    <div class="container">
+        <section class="d-flex justify-content-center" style="width: 100%;">
+            <div class="row" style="width: 100%;">
+                <div class="col text-center" style="width: 33.3333%;">
+                    <a class="stretched-link" href="<?= base_url() ?>" style="color: rgb(255,255,255);">
+                        <i class="fa fa-home" style="padding: 0;font-size: 26px;width: 100%;"></i>
+                        <p style="margin-bottom: 0;">HOME</p>
+                    </a>
+                </div>
+                <div class="col text-center" style="width: 33.3333%;">
+                    <a href="<?= base_url('data_keluhan_warga') ?>" style="color: rgb(255,255,255);">
+                        <i class="fa fa-file" style="padding: 0;font-size: 26px;width: 100%;"></i>
+                        <p style="margin-bottom: 0;">DATA KELUHAN</p>
+                    </a>
+                </div>
+                <div class="col text-center" style="width: 33.3333%;">
+                    <a href="<?= base_url('auth/logout') ?>" style="color: rgb(255,255,255);">
+                        <i class="fa fa-sign-out" style="padding: 0;font-size: 26px;width: 100%;"></i>
+                        <p style="margin-bottom: 0;">LOGOUT</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</nav>
