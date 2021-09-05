@@ -68,6 +68,10 @@ class Pengajuan_surat extends CI_Controller
                 'date_updated' => $row->date_updated,
                 'id_user' => $row->id_user,
             );
+            $new_data = array(
+                'status_pengajuan' => 'Sudah Dibaca',
+            );
+            $this->Pengajuan_surat_model->update($row->id_pengajuan, $new_data);
             $this->load->view('themes/content', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -109,6 +113,7 @@ class Pengajuan_surat extends CI_Controller
                 'jumlah_hari' => '-',
                 'alasan_dispen' => '-',
                 'rt_domisili' => $this->input->post('rt_domisili',TRUE),
+                'status_pengajuan' => 'Pengajuan Baru',
                 'date_created' => date('Y-m-d'),
                 'date_updated' => date('Y-m-d'),
                 'id_user' => $this->session->userdata('id_user'),

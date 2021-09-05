@@ -43,6 +43,10 @@ class Data_keluhan_warga extends CI_Controller
                 'date_created' => $row->date_created,
                 'date_updated' => $row->date_updated,
             );
+            $data_new = array(
+                'status_keluhan' => 'Sudah Dibaca',
+            );
+            $this->Data_keluhan_warga_model->update($row->id_keluhan, $data_new);
             $this->load->view('themes/content', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -82,6 +86,7 @@ class Data_keluhan_warga extends CI_Controller
               'judul_keluhan' => $this->input->post('judul_keluhan',TRUE),
               'deskripsi_keluhan' => $this->input->post('deskripsi_keluhan',TRUE),
               'id_user' => $this->session->userdata('id_user'),
+              'status_keluhan' => 'Keluhan Baru',
               'date_created' => date('Y-m-d'),
               'date_updated' => date('Y-m-d'),
           );
