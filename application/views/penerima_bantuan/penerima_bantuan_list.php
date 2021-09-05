@@ -1,5 +1,5 @@
-<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('assets/img/8.jpg');background-size: cover; background-attachment: fixed;">
-    <div class="container" style="max-width: 850px;">
+<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh; padding-top: 100px;background: url('assets/img/8.jpg');background-size: cover; background-attachment: fixed;">
+    <div class="container" style="max-width: 1000px; overflow: auto; margin-bottom: 100px;">
         <div class="intro">
             <?php 
             if($this->session->flashdata('message') !='')
@@ -23,7 +23,7 @@
                             <th>NIK</th>
                             <th>Nama Penerima</th>
                             <th>RT</th>
-                            <th>Jenis Bantuan</th>
+                            <th>Layak/Tidak</th>
                             <th>Tanggal Generate Penerima</th>
                             <th>Action</th>
                         </tr>
@@ -37,15 +37,12 @@
                             <td><?php echo $penerima_bantuan->nik ?></td>
                             <td><?php echo $penerima_bantuan->nama_penerima ?></td>
                             <td><?php echo $penerima_bantuan->rt ?></td>
-                            <td><?php echo $penerima_bantuan->jenis_bantuan ?></td>
+                            <td><?php echo $penerima_bantuan->status ?></td>
                             <td><?php echo date('d F Y', strtotime($penerima_bantuan->tanggal_generate_penerima)) ?></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" href="<?= site_url('laporan_data_warga/read/'.$laporan_data_warga->id_laporandata_warga) ?>"><i class="fa fa-book"></i></a>
+                                <a class="btn btn-sm btn-primary" href="<?= site_url('penerima_bantuan/read/'.$penerima_bantuan->id_penerima) ?>"><i class="fa fa-book"></i></a>
                                 <?php if ($this->session->userdata('role') == 'kader') { ?>
-                                    <?php if ($laporan_data_warga->status_lapor == 'Belum Dilaporkan') { ?>
-                                        <a class="btn btn-sm btn-secondary" href="<?= site_url('laporan_data_warga/laporkan/'.$laporan_data_warga->id_laporandata_warga) ?>" onclick="return confirm('Anda yakin mau melaporkan item ini ?')"><i class="fa fa-paper-plane"></i></a>
-                                    <?php } ?>
-                                    <a class="btn btn-sm btn-danger" href="<?= site_url('laporan_data_warga/delete/'.$laporan_data_warga->id_laporandata_warga) ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><i class="fa fa-trash"></i></a>
+                                    <a class="btn btn-sm btn-danger" href="<?= site_url('penerima_bantuan/delete/'.$penerima_bantuan->id_penerima) ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><i class="fa fa-trash"></i></a>
                                 <?php } ?> 
                             </td>
                         </tr>

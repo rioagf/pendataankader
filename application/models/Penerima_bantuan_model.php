@@ -93,6 +93,20 @@ class Penerima_bantuan_model extends CI_Model
         return $db;
     }
 
+    function usia_layak($usia)
+    {
+        // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
+        $db = $this->db->query("SELECT count(*) as usia_layak FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.usia = '$usia' AND data_training.status_kelayakan = 'Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        return $db;
+    }
+
+    function usia_tidak_layak($usia)
+    {
+        // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
+        $db = $this->db->query("SELECT count(*) as usia_tidak_layak FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.usia = '$usia' AND data_training.status_kelayakan = 'Tidak Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        return $db;
+    }
+
     function status_perkawinan_layak($perkawinan)
     {
         // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
@@ -206,7 +220,7 @@ class Penerima_bantuan_model extends CI_Model
     // insert data
     function insert($data)
     {
-        $this->db->insert($this->table, $data);
+        $this->db->insert_batch($this->table, $data);
     }
 
     // update data
