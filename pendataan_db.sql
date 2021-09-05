@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Sep 2021 pada 03.26
--- Versi server: 10.4.8-MariaDB
--- Versi PHP: 7.4.12
+-- Generation Time: Sep 05, 2021 at 10:28 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,32 +25,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_keluhan_warga`
+-- Table structure for table `data_keluhan_warga`
 --
 
 CREATE TABLE `data_keluhan_warga` (
   `id_keluhan` int(11) NOT NULL,
   `judul_keluhan` varchar(255) NOT NULL,
   `deskripsi_keluhan` text NOT NULL,
+  `status_keluhan` varchar(100) NOT NULL,
   `id_user` int(11) NOT NULL,
   `date_created` date NOT NULL,
   `date_updated` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `data_keluhan_warga`
+-- Dumping data for table `data_keluhan_warga`
 --
 
-INSERT INTO `data_keluhan_warga` (`id_keluhan`, `judul_keluhan`, `deskripsi_keluhan`, `id_user`, `date_created`, `date_updated`) VALUES
-(1, 'Keluhan Suara Berisik', 'Saya memiliki keluhan atas suara berisik yang dihasilkan oleh anak-anak yang sering nongkrong di pinggir jalan', 7, '2021-08-13', '2021-08-13'),
-(2, 'Keluhan Jalan Banjir', 'Jalan gang dekat rumah saya selalu banjir, apakah bisa bantu proses untuk memperbaiki nya?', 8, '2021-08-14', '2021-08-14'),
-(3, 'Data Sulit Didapatkan', 'Untuk saat ini data yang kami cari sulit untuk didapatkan, untuk itu perlu sistem yang bisa mengatasi kesulitan mengambil data', 10, '2021-08-19', '2021-08-19'),
-(4, 'Sulitnya Mendapatkan Data untuk RT 07', 'Data RT 07 susah untuk di dapatkan karena petugas pemerintahan yang bersangkutan sulit untuk dihubungi.', 10, '2021-08-21', '2021-08-21');
+INSERT INTO `data_keluhan_warga` (`id_keluhan`, `judul_keluhan`, `deskripsi_keluhan`, `status_keluhan`, `id_user`, `date_created`, `date_updated`) VALUES
+(1, 'Keluhan Suara Berisik', 'Saya memiliki keluhan atas suara berisik yang dihasilkan oleh anak-anak yang sering nongkrong di pinggir jalan', 'Keluhan Baru', 7, '2021-08-13', '2021-08-13'),
+(2, 'Keluhan Jalan Banjir', 'Jalan gang dekat rumah saya selalu banjir, apakah bisa bantu proses untuk memperbaiki nya?', 'Keluhan Baru', 8, '2021-08-14', '2021-08-14'),
+(3, 'Data Sulit Didapatkan', 'Untuk saat ini data yang kami cari sulit untuk didapatkan, untuk itu perlu sistem yang bisa mengatasi kesulitan mengambil data', 'Sudah Dibaca', 10, '2021-08-19', '2021-08-19'),
+(4, 'Sulitnya Mendapatkan Data untuk RT 07', 'Data RT 07 susah untuk di dapatkan karena petugas pemerintahan yang bersangkutan sulit untuk dihubungi.', 'Keluhan Baru', 10, '2021-08-21', '2021-08-21');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_petugas`
+-- Table structure for table `data_petugas`
 --
 
 CREATE TABLE `data_petugas` (
@@ -62,7 +64,7 @@ CREATE TABLE `data_petugas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `data_petugas`
+-- Dumping data for table `data_petugas`
 --
 
 INSERT INTO `data_petugas` (`id_petugas`, `nama_petugas`, `jabatan`, `id_user`, `date_created`, `date_updated`) VALUES
@@ -73,7 +75,7 @@ INSERT INTO `data_petugas` (`id_petugas`, `nama_petugas`, `jabatan`, `id_user`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_training`
+-- Table structure for table `data_training`
 --
 
 CREATE TABLE `data_training` (
@@ -86,7 +88,7 @@ CREATE TABLE `data_training` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `data_training`
+-- Dumping data for table `data_training`
 --
 
 INSERT INTO `data_training` (`id`, `no_kk`, `status_kelayakan`, `id_user`, `date_created`, `date_updated`) VALUES
@@ -115,7 +117,7 @@ INSERT INTO `data_training` (`id`, `no_kk`, `status_kelayakan`, `id_user`, `date
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_warga`
+-- Table structure for table `data_warga`
 --
 
 CREATE TABLE `data_warga` (
@@ -145,7 +147,7 @@ CREATE TABLE `data_warga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `data_warga`
+-- Dumping data for table `data_warga`
 --
 
 INSERT INTO `data_warga` (`id_data_warga`, `no_kk`, `nik`, `nama_lengkap`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `usia`, `status_perkawinan`, `agama`, `warganegara`, `pendidikan`, `kondisi_pekerjaan`, `pekerjaan_utama`, `jamsostek`, `penghasilan`, `jamsoskes`, `rt`, `status_keluarga`, `date_created`, `date_updated`, `id_user`, `id_petugas`) VALUES
@@ -216,7 +218,7 @@ INSERT INTO `data_warga` (`id_data_warga`, `no_kk`, `nik`, `nama_lengkap`, `jeni
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `desk_keluarga`
+-- Table structure for table `desk_keluarga`
 --
 
 CREATE TABLE `desk_keluarga` (
@@ -249,7 +251,7 @@ CREATE TABLE `desk_keluarga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `desk_keluarga`
+-- Dumping data for table `desk_keluarga`
 --
 
 INSERT INTO `desk_keluarga` (`id_desk`, `no_kk`, `tempat_tinggal`, `status_lahan`, `luas_lantai`, `luas_lahan`, `jenis_lantai`, `dinding`, `jendela`, `genteng`, `penerangan`, `energi_memasak`, `tps`, `mck`, `sumber_airmandi`, `fasilitas_bab`, `sumber_airminum`, `pembuangan_limbah`, `bawah_sutet`, `bantaran_sungai`, `lerang`, `kondisi_rumah`, `date_created`, `date_updated`, `id_user`, `id_petugas`) VALUES
@@ -278,7 +280,7 @@ INSERT INTO `desk_keluarga` (`id_desk`, `no_kk`, `tempat_tinggal`, `status_lahan
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `laporan_data_warga`
+-- Table structure for table `laporan_data_warga`
 --
 
 CREATE TABLE `laporan_data_warga` (
@@ -299,7 +301,7 @@ CREATE TABLE `laporan_data_warga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `laporan_data_warga`
+-- Dumping data for table `laporan_data_warga`
 --
 
 INSERT INTO `laporan_data_warga` (`id_laporandata_warga`, `rt_satu`, `rt_dua`, `rt_tiga`, `rt_empat`, `rt_lima`, `rt_enam`, `rt_tujuh`, `rt_delapan`, `jumlah`, `status_lapor`, `date_created`, `date_updated`, `id_user`) VALUES
@@ -309,7 +311,7 @@ INSERT INTO `laporan_data_warga` (`id_laporandata_warga`, `rt_satu`, `rt_dua`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penerima_bantuan`
+-- Table structure for table `penerima_bantuan`
 --
 
 CREATE TABLE `penerima_bantuan` (
@@ -329,7 +331,7 @@ CREATE TABLE `penerima_bantuan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengajuan_surat`
+-- Table structure for table `pengajuan_surat`
 --
 
 CREATE TABLE `pengajuan_surat` (
@@ -344,25 +346,26 @@ CREATE TABLE `pengajuan_surat` (
   `jumlah_hari` varchar(10) NOT NULL,
   `alasan_dispen` text NOT NULL,
   `rt_domisili` varchar(5) NOT NULL,
+  `status_pengajuan` varchar(100) NOT NULL,
   `date_created` date NOT NULL,
   `date_updated` date NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pengajuan_surat`
+-- Dumping data for table `pengajuan_surat`
 --
 
-INSERT INTO `pengajuan_surat` (`id_pengajuan`, `jenis_surat`, `nama_pembuat_pengajuan`, `nama_yang_meninggal`, `tanggal_kematian`, `faktor_kematian`, `tanggal_dispensasi`, `sampai_tanggal_dispensasi`, `jumlah_hari`, `alasan_dispen`, `rt_domisili`, `date_created`, `date_updated`, `id_user`) VALUES
-(1, 'surat kematian', 'nama', 'nama', '2021-08-12', 'sakit', '0000-00-00', '0000-00-00', '-', '-', '1', '2021-08-13', '2021-08-13', 7),
-(2, 'surat kematian', 'nama', 'nama', '2021-08-13', 'sakit', '0000-00-00', '0000-00-00', '-', '-', '1', '2021-08-13', '2021-08-13', 7),
-(3, 'surat domisili', 'nama', '-', '0000-00-00', '-', '0000-00-00', '0000-00-00', '-', '-', '1', '2021-08-13', '2021-08-13', 7),
-(4, 'surat dispensasi', 'nama', '-', '0000-00-00', '-', '2021-08-12', '2021-08-13', '2', 'Sakit', '1', '2021-08-13', '2021-08-13', 7);
+INSERT INTO `pengajuan_surat` (`id_pengajuan`, `jenis_surat`, `nama_pembuat_pengajuan`, `nama_yang_meninggal`, `tanggal_kematian`, `faktor_kematian`, `tanggal_dispensasi`, `sampai_tanggal_dispensasi`, `jumlah_hari`, `alasan_dispen`, `rt_domisili`, `status_pengajuan`, `date_created`, `date_updated`, `id_user`) VALUES
+(1, 'surat kematian', 'nama', 'nama', '2021-08-12', 'sakit', '0000-00-00', '0000-00-00', '-', '-', '1', 'Sudah Dibaca', '2021-08-13', '2021-08-13', 7),
+(2, 'surat kematian', 'nama', 'nama', '2021-08-13', 'sakit', '0000-00-00', '0000-00-00', '-', '-', '1', 'Sudah Dibaca', '2021-08-13', '2021-08-13', 7),
+(3, 'surat domisili', 'nama', '-', '0000-00-00', '-', '0000-00-00', '0000-00-00', '-', '-', '1', 'Sudah Dibaca', '2021-08-13', '2021-08-13', 7),
+(4, 'surat dispensasi', 'nama', '-', '0000-00-00', '-', '2021-08-12', '2021-08-13', '2', 'Sakit', '1', 'Sudah Dibaca', '2021-08-13', '2021-08-13', 7);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `token`
+-- Table structure for table `token`
 --
 
 CREATE TABLE `token` (
@@ -373,7 +376,7 @@ CREATE TABLE `token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `token`
+-- Dumping data for table `token`
 --
 
 INSERT INTO `token` (`id`, `token`, `id_user`, `date_created`) VALUES
@@ -383,7 +386,7 @@ INSERT INTO `token` (`id`, `token`, `id_user`, `date_created`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -399,7 +402,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `no_hp`, `no_kk`, `role`, `date_created`, `date_updated`) VALUES
@@ -414,28 +417,28 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `no_hp`, `no_kk`
 --
 
 --
--- Indeks untuk tabel `data_keluhan_warga`
+-- Indexes for table `data_keluhan_warga`
 --
 ALTER TABLE `data_keluhan_warga`
   ADD PRIMARY KEY (`id_keluhan`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `data_petugas`
+-- Indexes for table `data_petugas`
 --
 ALTER TABLE `data_petugas`
   ADD PRIMARY KEY (`id_petugas`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `data_training`
+-- Indexes for table `data_training`
 --
 ALTER TABLE `data_training`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `data_warga`
+-- Indexes for table `data_warga`
 --
 ALTER TABLE `data_warga`
   ADD PRIMARY KEY (`id_data_warga`),
@@ -444,7 +447,7 @@ ALTER TABLE `data_warga`
   ADD KEY `id_petugas` (`id_petugas`);
 
 --
--- Indeks untuk tabel `desk_keluarga`
+-- Indexes for table `desk_keluarga`
 --
 ALTER TABLE `desk_keluarga`
   ADD PRIMARY KEY (`id_desk`),
@@ -452,14 +455,14 @@ ALTER TABLE `desk_keluarga`
   ADD KEY `id_petugas` (`id_petugas`);
 
 --
--- Indeks untuk tabel `laporan_data_warga`
+-- Indexes for table `laporan_data_warga`
 --
 ALTER TABLE `laporan_data_warga`
   ADD PRIMARY KEY (`id_laporandata_warga`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `penerima_bantuan`
+-- Indexes for table `penerima_bantuan`
 --
 ALTER TABLE `penerima_bantuan`
   ADD PRIMARY KEY (`id_penerima`),
@@ -467,85 +470,85 @@ ALTER TABLE `penerima_bantuan`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `pengajuan_surat`
+-- Indexes for table `pengajuan_surat`
 --
 ALTER TABLE `pengajuan_surat`
   ADD PRIMARY KEY (`id_pengajuan`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `token`
+-- Indexes for table `token`
 --
 ALTER TABLE `token`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `data_keluhan_warga`
+-- AUTO_INCREMENT for table `data_keluhan_warga`
 --
 ALTER TABLE `data_keluhan_warga`
   MODIFY `id_keluhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `data_petugas`
+-- AUTO_INCREMENT for table `data_petugas`
 --
 ALTER TABLE `data_petugas`
   MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `data_training`
+-- AUTO_INCREMENT for table `data_training`
 --
 ALTER TABLE `data_training`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `data_warga`
+-- AUTO_INCREMENT for table `data_warga`
 --
 ALTER TABLE `data_warga`
   MODIFY `id_data_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- AUTO_INCREMENT untuk tabel `desk_keluarga`
+-- AUTO_INCREMENT for table `desk_keluarga`
 --
 ALTER TABLE `desk_keluarga`
   MODIFY `id_desk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT untuk tabel `laporan_data_warga`
+-- AUTO_INCREMENT for table `laporan_data_warga`
 --
 ALTER TABLE `laporan_data_warga`
   MODIFY `id_laporandata_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `penerima_bantuan`
+-- AUTO_INCREMENT for table `penerima_bantuan`
 --
 ALTER TABLE `penerima_bantuan`
   MODIFY `id_penerima` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `pengajuan_surat`
+-- AUTO_INCREMENT for table `pengajuan_surat`
 --
 ALTER TABLE `pengajuan_surat`
   MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `token`
+-- AUTO_INCREMENT for table `token`
 --
 ALTER TABLE `token`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
