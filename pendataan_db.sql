@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Agu 2021 pada 12.36
+-- Waktu pembuatan: 05 Sep 2021 pada 03.26
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.4.12
 
@@ -108,7 +108,9 @@ INSERT INTO `data_training` (`id`, `no_kk`, `status_kelayakan`, `id_user`, `date
 (16, '3204321210120038', 'Tidak Layak', 10, '2021-08-21', '2021-08-21'),
 (17, '3204321802130012', 'Tidak Layak', 10, '2021-08-21', '2021-08-21'),
 (18, '3207361812140002', 'Layak', 10, '2021-08-21', '2021-08-21'),
-(19, '3204323103057784', 'Layak', 10, '2021-08-21', '2021-08-21');
+(19, '3204323103057784', 'Layak', 10, '2021-08-21', '2021-08-21'),
+(20, '3204322607680003', 'Tidak Layak', 10, '2021-08-22', '2021-08-22'),
+(21, '3204323010130021', 'Layak', 10, '2021-08-24', '2021-08-24');
 
 -- --------------------------------------------------------
 
@@ -124,6 +126,7 @@ CREATE TABLE `data_warga` (
   `jenis_kelamin` char(2) NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
   `tanggal_lahir` date NOT NULL,
+  `usia` int(11) NOT NULL,
   `status_perkawinan` varchar(100) NOT NULL,
   `agama` varchar(100) NOT NULL,
   `warganegara` varchar(10) NOT NULL,
@@ -145,67 +148,70 @@ CREATE TABLE `data_warga` (
 -- Dumping data untuk tabel `data_warga`
 --
 
-INSERT INTO `data_warga` (`id_data_warga`, `no_kk`, `nik`, `nama_lengkap`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `status_perkawinan`, `agama`, `warganegara`, `pendidikan`, `kondisi_pekerjaan`, `pekerjaan_utama`, `jamsostek`, `penghasilan`, `jamsoskes`, `rt`, `status_keluarga`, `date_created`, `date_updated`, `id_user`, `id_petugas`) VALUES
-(12, '3204322111070110', '3204320503470006', 'Yayat Sutaryat', 'L', 'Bandung', '1947-05-03', 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-19', '2021-08-19', 10, 0),
-(13, '3204322111070110', '3204325508560012', 'O. Kurniati', 'P', 'Bandung', '1956-12-08', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-19', '2021-08-19', 10, 0),
-(14, '3204322910080009', '3204326311720015', 'Kokom Komariah', 'P', 'Bandung', '1972-11-23', 'Cerai Mati', 'Islam', 'WNI', 'SMP dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3200000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-20', '2021-08-20', 0, 0),
-(15, '3204322910080009', '3204322910080009', 'Gugum Gumilar', 'L', 'Bandung', '1996-03-10', 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-20', '2021-08-20', 0, 0),
-(16, '3204322910080009', '3204322203040010', 'Pebri Galih Permana', 'L', 'Bandung', '2006-03-22', 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-20', '2021-08-20', 0, 0),
-(17, '3204321912180024', '3204321501490002', 'Ondo', 'L', 'Bandung', '1949-01-15', 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-20', '2021-08-20', 10, 0),
-(20, '3204321702100043', '3204320507500014', 'Apo Sujana', 'L', 'Bandung', '1950-07-05', 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '800000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(21, '3204321702100043', '3204326003530008', 'Cucu Rodiah', 'L', 'Bandung', '1953-03-20', 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(22, '3204320411150024', '3206302703910004', 'Dudi Supriadi', 'L', 'Tasikmalaya', '1991-03-27', 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '1000000', 'Bukan Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(23, '3204320411150024', '3204326007930005', 'Tita Septiawati', 'P', 'Bandung', '1993-07-20', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(24, '3204320411150024', '3204324301140004', 'Nayra Vanesa Anjani', 'P', 'Bandung', '2014-01-03', 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(25, '3204322012060026', '3204321512800017', 'Ato Saepudin', 'L', 'Bandung', '1980-12-15', 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '1200000', 'Bukan Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(26, '3204322012060026', '3204324809810015', 'Yati Suryati', 'P', 'Bandung', '1981-09-08', 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '1000000', 'Bukan Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(27, '3204322012060026', '3204326606110009', 'Sari Nur Padilah', 'P', 'Bandung', '2011-06-26', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(28, '2304320204051729', '3204322612430001', 'Suparman', 'L', 'Bandung', '1946-12-26', 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '500000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(29, '2304320204051729', '3204326004700016', 'Siti Sumiati', 'P', 'Bandung', '1970-04-20', 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(30, '2304320204051729', '3204322507020024', 'Kurnia Kuswandi P', 'L', 'Bandung', '2002-07-25', 'Belum Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(31, '3204324603500001', '3204324603500001', 'Titing', 'P', 'Bandung', '1950-03-06', 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '750000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(32, '3204321406110090', '3204320101540205', 'Ade Adam', 'L', 'Bandung', '1954-01-01', 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '750000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(33, '3204321406110090', '3204324101550148', 'Rohana', 'P', 'Bandung', '1955-01-01', 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(34, '3204320204051672', '3204321508410001', 'Lili Suparli', 'L', 'Bandung', '1941-08-15', 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(35, '3204320204051672', '3204322809820003', 'Ari Ismail Saleh', 'L', 'Bandung', '1982-09-22', 'Cerai Hidup', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(36, '3204321711160026', '3204320509750007', 'Yayan Sopian', 'L', 'Bandung', '1975-09-05', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(37, '3204321711160026', '3204324702830020', 'Ririn Royani', 'P', 'Tasikmalaya', '1983-02-07', 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(38, '3204321711160026', '3204326010030006', 'Dinda Octaviani Sofyan', 'P', 'Bandung', '2003-10-20', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(39, '3204321711160026', '3204321703110001', 'Razka Bayhaqi Sofyan', 'L', 'Bandung', '2011-03-17', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(40, '3204322502060188', '3204322109600006', 'H. Dude Satari', 'L', 'Bandung', '1960-09-21', 'Kawin', 'Islam', 'WNI', 'Diploma 1-3', 'Tidak Bekerja', 'Pensiunan', 'Bukan Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(41, '3204322502060188', '3204326303670010', 'Hj. Awang', 'P', 'Bandung', '1967-03-23', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(42, '3204322502060188', '3204322101960008', 'Azmi Luqman', 'L', 'Bandung', '1996-01-21', 'Belum Kawin', 'Islam', 'WNI', 'S1 dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(43, '3204322502060188', '3204321111970010', 'Syahrul Firdaus', 'L', 'Bandung', '1997-11-11', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(44, '3204322110130020', '3204321101920002', 'Hanhan Burhanudin', 'L', 'Bandung', '1992-01-11', 'Kawin', 'Islam', 'WNI', 'Diploma 1-3', 'Bekerja', 'Lainnya', 'Bukan Peserta', '4000000', 'Bukan Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(45, '3204322110130020', '3204325205920002', 'Wiwin Diniyati', 'P', 'Bandung', '1992-05-12', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(46, '3204322110130020', '3204320510130003', 'Azka Almair Jamil', 'L', 'Bandung', '2013-10-05', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(47, '3204322110130020', '3204321111180006', 'Habibi Alsaki', 'L', 'Bandung', '2018-11-11', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(48, '3204322711120162', '3204080603520002', 'Ade Ruspandi', 'L', 'Bandung', '1952-03-06', 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '2500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(49, '3204322711120162', '3204084505580008', 'Aisyah', 'P', 'Bandung', '1958-05-05', 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(50, '3204322711120162', '3204321411150006', 'Rezha Aulia Santana', 'L', 'Bandung', '2015-11-14', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(51, '3204322711120162', '3204327011090016', 'Merlin Nur Kumala', 'P', 'Bandung', '2009-11-30', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(52, '3204320104058149', '3204322707680007', 'Ayi Hidir Kosasih', 'L', 'Bandung', '1968-07-27', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '3000000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(53, '3204320104058149', '3204324107740210', 'Tiktik Atikah', 'P', 'Bandung', '1974-07-01', 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(54, '3204320104058149', '3204326811050002', 'Novianti Ashani', 'P', 'Bandung', '2005-11-26', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(55, '3204320104058149', '3204325507070013', 'Ria Amelia', 'P', 'Bandung', '2007-07-15', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(56, '3204321210120038', '3204321111770006', 'Deni Andriyanto', 'L', 'Bandung', '1977-11-11', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(57, '3204321210120038', '3204325507770002', 'Yuli Yulianti', 'P', 'Bandung', '1977-07-15', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(58, '3204321210120038', '3204325008010004', 'Agnes Fadilah Damayanti', 'P', 'Bandung', '2001-08-10', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(59, '3204321210120038', '3204325208080007', 'Anggia Nur Fatimah Damayanti', 'P', 'Bandung', '2008-08-12', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(60, '3204321802130012', '3204321602840004', 'Rudiyono', 'L', 'Brebes', '1984-02-16', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '2000000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(61, '3204321802130012', '3204324404800066', 'Dianingsih', 'P', 'Bandung', '1980-04-04', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(62, '3204321802130012', '3204323004130001', 'Daffa Rudiansyah', 'L', 'Bandung', '2013-04-30', 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(63, '3204321802130012', '3204320903170002', 'Raffa Rudiansyah', 'L', 'Bandung', '2017-03-09', 'Belum Kawin', 'Islam', 'WNI', 'Tidak Sekolah', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(64, '3207361812140002', '3204321612790003', 'Dede Yuliana', 'L', 'Bandung', '1979-12-16', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(65, '3207361812140002', '3204327103910005', 'Kiki Ayu Lestari', 'P', 'Bandung', '1991-03-31', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(66, '3207361812140002', '3204321907120005', 'Deris Ramdani', 'L', 'Bandung', '2012-07-19', 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(67, '3207361812140002', '3218064701160001', 'Mahaulida Intan Kirana', 'P', 'Pangandaran', '2016-01-07', 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(68, '3204323103057784', '3204323107690004', 'Achmad Hidayat', 'L', 'Bandung', '1969-07-31', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '2500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(69, '3204323103057784', '3204327107720005', 'Sumiati', 'P', 'Bandung', '1972-07-31', 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(70, '3204323103057784', '3204321805940002', 'Achdi Panji Sakti', 'L', 'Bandung', '1994-05-18', 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '2000000', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(71, '3204323103057784', '3204324403040014', 'Puteri Komala Sari', 'P', 'Bandung', '2004-03-04', 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(72, '3204322607680003', '3204326105690017', 'Atin Rohayatin', 'P', 'Bandung', '1969-05-21', 'Cerai Mati', 'Islam', 'WNI', 'SMA dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(73, '3204322607680003', '3204320808910004', 'Reggy Ferdian Ryana', 'L', 'Bandung', '1991-08-08', 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3000000', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0);
+INSERT INTO `data_warga` (`id_data_warga`, `no_kk`, `nik`, `nama_lengkap`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `usia`, `status_perkawinan`, `agama`, `warganegara`, `pendidikan`, `kondisi_pekerjaan`, `pekerjaan_utama`, `jamsostek`, `penghasilan`, `jamsoskes`, `rt`, `status_keluarga`, `date_created`, `date_updated`, `id_user`, `id_petugas`) VALUES
+(12, '3204322111070110', '3204320503470006', 'Yayat Sutaryat', 'L', 'Bandung', '1947-05-03', 74, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-19', '2021-08-19', 10, 0),
+(13, '3204322111070110', '3204325508560012', 'O. Kurniati', 'P', 'Bandung', '1956-12-08', 65, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-19', '2021-08-19', 10, 0),
+(14, '3204322910080009', '3204326311720015', 'Kokom Komariah', 'P', 'Bandung', '1972-11-23', 49, 'Cerai Mati', 'Islam', 'WNI', 'SMP dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3200000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-20', '2021-08-20', 0, 0),
+(15, '3204322910080009', '3204322910080009', 'Gugum Gumilar', 'L', 'Bandung', '1996-03-10', 25, 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-20', '2021-08-20', 0, 0),
+(16, '3204322910080009', '3204322203040010', 'Pebri Galih Permana', 'L', 'Bandung', '2006-03-22', 15, 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-20', '2021-08-20', 0, 0),
+(17, '3204321912180024', '3204321501490002', 'Ondo', 'L', 'Bandung', '1949-01-15', 72, 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-20', '2021-08-20', 10, 0),
+(20, '3204321702100043', '3204320507500014', 'Apo Sujana', 'L', 'Bandung', '1950-07-05', 71, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '800000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(21, '3204321702100043', '3204326003530008', 'Cucu Rodiah', 'L', 'Bandung', '1953-03-20', 68, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(22, '3204320411150024', '3206302703910004', 'Dudi Supriadi', 'L', 'Tasikmalaya', '1991-03-27', 30, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '1000000', 'Bukan Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(23, '3204320411150024', '3204326007930005', 'Tita Septiawati', 'P', 'Bandung', '1993-07-20', 28, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(24, '3204320411150024', '3204324301140004', 'Nayra Vanesa Anjani', 'P', 'Bandung', '2014-01-03', 7, 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(25, '3204322012060026', '3204321512800017', 'Ato Saepudin', 'L', 'Bandung', '1980-12-15', 41, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '1200000', 'Bukan Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(26, '3204322012060026', '3204324809810015', 'Yati Suryati', 'P', 'Bandung', '1981-09-08', 40, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '1000000', 'Bukan Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(27, '3204322012060026', '3204326606110009', 'Sari Nur Padilah', 'P', 'Bandung', '2011-06-26', 10, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(28, '2304320204051729', '3204322612430001', 'Suparman', 'L', 'Bandung', '1946-12-26', 75, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '500000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(29, '2304320204051729', '3204326004700016', 'Siti Sumiati', 'P', 'Bandung', '1970-04-20', 51, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(30, '2304320204051729', '3204322507020024', 'Kurnia Kuswandi P', 'L', 'Bandung', '2002-07-25', 19, 'Belum Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(31, '3204324603500001', '3204324603500001', 'Titing', 'P', 'Bandung', '1950-03-06', 71, 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '750000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(32, '3204321406110090', '3204320101540205', 'Ade Adam', 'L', 'Bandung', '1954-01-01', 67, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '750000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(33, '3204321406110090', '3204324101550148', 'Rohana', 'P', 'Bandung', '1955-01-01', 66, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(34, '3204320204051672', '3204321508410001', 'Lili Suparli', 'L', 'Bandung', '1941-08-15', 80, 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(35, '3204320204051672', '3204322809820003', 'Ari Ismail Saleh', 'L', 'Bandung', '1982-09-22', 39, 'Cerai Hidup', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(36, '3204321711160026', '3204320509750007', 'Yayan Sopian', 'L', 'Bandung', '1975-09-05', 46, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(37, '3204321711160026', '3204324702830020', 'Ririn Royani', 'P', 'Tasikmalaya', '1983-02-07', 38, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(38, '3204321711160026', '3204326010030006', 'Dinda Octaviani Sofyan', 'P', 'Bandung', '2003-10-20', 18, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(39, '3204321711160026', '3204321703110001', 'Razka Bayhaqi Sofyan', 'L', 'Bandung', '2011-03-17', 10, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(40, '3204322502060188', '3204322109600006', 'H. Dude Satari', 'L', 'Bandung', '1960-09-21', 61, 'Kawin', 'Islam', 'WNI', 'Diploma 1-3', 'Tidak Bekerja', 'Pensiunan', 'Bukan Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(41, '3204322502060188', '3204326303670010', 'Hj. Awang', 'P', 'Bandung', '1967-03-23', 54, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(42, '3204322502060188', '3204322101960008', 'Azmi Luqman', 'L', 'Bandung', '1996-01-21', 25, 'Belum Kawin', 'Islam', 'WNI', 'S1 dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(43, '3204322502060188', '3204321111970010', 'Syahrul Firdaus', 'L', 'Bandung', '1997-11-11', 24, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(44, '3204322110130020', '3204321101920002', 'Hanhan Burhanudin', 'L', 'Bandung', '1992-01-11', 29, 'Kawin', 'Islam', 'WNI', 'Diploma 1-3', 'Bekerja', 'Lainnya', 'Bukan Peserta', '4000000', 'Bukan Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(45, '3204322110130020', '3204325205920002', 'Wiwin Diniyati', 'P', 'Bandung', '1992-05-12', 29, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(46, '3204322110130020', '3204320510130003', 'Azka Almair Jamil', 'L', 'Bandung', '2013-10-05', 8, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(47, '3204322110130020', '3204321111180006', 'Habibi Alsaki', 'L', 'Bandung', '2018-11-11', 3, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(48, '3204322711120162', '3204080603520002', 'Ade Ruspandi', 'L', 'Bandung', '1952-03-06', 69, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '2500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(49, '3204322711120162', '3204084505580008', 'Aisyah', 'P', 'Bandung', '1958-05-05', 63, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(50, '3204322711120162', '3204321411150006', 'Rezha Aulia Santana', 'L', 'Bandung', '2015-11-14', 6, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(51, '3204322711120162', '3204327011090016', 'Merlin Nur Kumala', 'P', 'Bandung', '2009-11-30', 12, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(52, '3204320104058149', '3204322707680007', 'Ayi Hidir Kosasih', 'L', 'Bandung', '1968-07-27', 53, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '3000000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(53, '3204320104058149', '3204324107740210', 'Tiktik Atikah', 'P', 'Bandung', '1974-07-01', 47, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(54, '3204320104058149', '3204326811050002', 'Novianti Ashani', 'P', 'Bandung', '2005-11-26', 16, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(55, '3204320104058149', '3204325507070013', 'Ria Amelia', 'P', 'Bandung', '2007-07-15', 14, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(56, '3204321210120038', '3204321111770006', 'Deni Andriyanto', 'L', 'Bandung', '1977-11-11', 44, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(57, '3204321210120038', '3204325507770002', 'Yuli Yulianti', 'P', 'Bandung', '1977-07-15', 44, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(58, '3204321210120038', '3204325008010004', 'Agnes Fadilah Damayanti', 'P', 'Bandung', '2001-08-10', 20, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(59, '3204321210120038', '3204325208080007', 'Anggia Nur Fatimah Damayanti', 'P', 'Bandung', '2008-08-12', 13, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(60, '3204321802130012', '3204321602840004', 'Rudiyono', 'L', 'Brebes', '1984-02-16', 37, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '2000000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(61, '3204321802130012', '3204324404800066', 'Dianingsih', 'P', 'Bandung', '1980-04-04', 41, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(62, '3204321802130012', '3204323004130001', 'Daffa Rudiansyah', 'L', 'Bandung', '2013-04-30', 8, 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(63, '3204321802130012', '3204320903170002', 'Raffa Rudiansyah', 'L', 'Bandung', '2017-03-09', 4, 'Belum Kawin', 'Islam', 'WNI', 'Tidak Sekolah', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(64, '3207361812140002', '3204321612790003', 'Dede Yuliana', 'L', 'Bandung', '1979-12-16', 42, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(65, '3207361812140002', '3204327103910005', 'Kiki Ayu Lestari', 'P', 'Bandung', '1991-03-31', 30, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(66, '3207361812140002', '3204321907120005', 'Deris Ramdani', 'L', 'Bandung', '2012-07-19', 9, 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(67, '3207361812140002', '3218064701160001', 'Mahaulida Intan Kirana', 'P', 'Pangandaran', '2016-01-07', 5, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(68, '3204323103057784', '3204323107690004', 'Achmad Hidayat', 'L', 'Bandung', '1969-07-31', 52, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '2500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(69, '3204323103057784', '3204327107720005', 'Sumiati', 'P', 'Bandung', '1972-07-31', 49, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
+(70, '3204323103057784', '3204321805940002', 'Achdi Panji Sakti', 'L', 'Bandung', '1994-05-18', 27, 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '2000000', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(71, '3204323103057784', '3204324403040014', 'Puteri Komala Sari', 'P', 'Bandung', '2004-03-04', 17, 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(72, '3204322607680003', '3204326105690017', 'Atin Rohayatin', 'P', 'Bandung', '1969-05-21', 52, 'Cerai Mati', 'Islam', 'WNI', 'SMA dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
+(73, '3204322607680003', '3204320808910004', 'Reggy Ferdian Ryana', 'L', 'Bandung', '1991-08-08', 30, 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3000000', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(83, '3204323010130021', '3204320702840018', 'Yadi Rusyadi', 'L', 'Bandung', '1984-02-07', 37, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Kepala Keluarga', '2021-09-04', '2021-09-04', 10, 0),
+(84, '3204323010130021', '3204325004890014', 'Hasanah Munawaroh', 'P', 'Tasikmalaya', '1989-04-10', 32, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-09-04', '2021-09-04', 10, 0),
+(85, '3204323010130021', '3204322310150002', 'Yusril Fardan Fairus', 'L', 'Bandung', '2015-10-23', 5, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-09-04', '2021-09-04', 10, 0);
 
 -- --------------------------------------------------------
 
@@ -266,7 +272,8 @@ INSERT INTO `desk_keluarga` (`id_desk`, `no_kk`, `tempat_tinggal`, `status_lahan
 (20, '3204321802130012', 'Milik Sendiri', 'Milik Sendiri', '', '', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Sawah/Kolam/Sungai/Drainase/Laut', 'Tidak', 'Tidak', 'Tidak', 'Tidak Kumuh', '2021-08-21', '2021-08-21', 10, 0),
 (21, '3207361812140002', 'Milik Sendiri', 'Milik Sendiri', '50', '50', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Tangki/Instalasi Pengelolaan Limbah', 'Tidak', 'Tidak', 'Tidak', 'Tidak Kumuh', '2021-08-21', '2021-08-21', 10, 0),
 (22, '3204323103057784', 'Milik Sendiri', 'Milik Sendiri', '56', '56', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Tangki/Instalasi Pengelolaan Limbah', 'Tidak', 'Tidak', 'Tidak', 'Tidak Kumuh', '2021-08-21', '2021-08-21', 10, 0),
-(23, '3204322607680003', 'Milik Sendiri', 'Milik Sendiri', '98', '98', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Sawah/Kolam/Sungai/Drainase/Laut', 'Tidak', 'Tidak', 'Ya', 'Tidak Kumuh', '2021-08-21', '2021-08-21', 10, 0);
+(23, '3204322607680003', 'Milik Sendiri', 'Milik Sendiri', '98', '98', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Sawah/Kolam/Sungai/Drainase/Laut', 'Tidak', 'Tidak', 'Ya', 'Tidak Kumuh', '2021-08-21', '2021-08-21', 10, 0),
+(26, '3204323010130021', 'Milik Sendiri', 'Milik Sendiri', '', '98', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Tangki/Instalasi Pengelolaan Limbah', 'Tidak', 'Tidak', 'Tidak', 'Tidak Kumuh', '2021-09-04', '2021-09-04', 10, 0);
 
 -- --------------------------------------------------------
 
@@ -307,11 +314,12 @@ INSERT INTO `laporan_data_warga` (`id_laporandata_warga`, `rt_satu`, `rt_dua`, `
 
 CREATE TABLE `penerima_bantuan` (
   `id_penerima` int(11) NOT NULL,
-  `no_kk` int(11) NOT NULL,
-  `nik` int(11) NOT NULL,
+  `no_kk` varchar(30) NOT NULL,
+  `nik` varchar(30) NOT NULL,
   `nama_penerima` varchar(255) NOT NULL,
   `rt` varchar(10) NOT NULL,
   `jenis_bantuan` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
   `tanggal_generate_penerima` date NOT NULL,
   `date_created` date NOT NULL,
   `date_updated` int(11) NOT NULL,
@@ -498,19 +506,19 @@ ALTER TABLE `data_petugas`
 -- AUTO_INCREMENT untuk tabel `data_training`
 --
 ALTER TABLE `data_training`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_warga`
 --
 ALTER TABLE `data_warga`
-  MODIFY `id_data_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id_data_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT untuk tabel `desk_keluarga`
 --
 ALTER TABLE `desk_keluarga`
-  MODIFY `id_desk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_desk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `laporan_data_warga`
