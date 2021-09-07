@@ -18,9 +18,17 @@ class Pengajuan_surat_model extends CI_Model
     // get all
     function get_all()
     {
-        $this->db->where('id_user', $this->session->userdata('id_user'));
+        if ($this->session->userdata('role') == 'rw') {
+            // $this->db->where('id_user', $this->session->userdata('id_user'));
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
+        } else {
+            $this->db->where('id_user', $this->session->userdata('id_user'));
+        $this->db->order_by($this->id, $this->order);
+        return $this->db->get($this->table)->result();
+        }
+        
+        
     }
 
     // get data by id

@@ -20,8 +20,8 @@ class Data_keluhan_warga_model extends CI_Model
     {
         if ($this->session->userdata('role') == 'rw') {
             $this->db->join('data_warga', 'data_warga.id_user = data_keluhan_warga.id_user');
-            $this->db->where('data_warga.status_keluarga', 'kepala keluarga');
-            $this->db->order_by($this->id, $this->order);
+            $this->db->where('data_warga.status_keluarga', 'Kepala Keluarga');
+            // $this->db->order_by($this->id, $this->order);
             return $this->db->get($this->table)->result();
         } else if ($this->session->userdata('role') == 'warga') {
             $where = array(

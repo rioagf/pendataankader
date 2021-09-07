@@ -25,7 +25,8 @@ class Data_warga_model extends CI_Model
 
     function get_for_pengajuan()
     {
-        $this->db->where('id_user', $this->session->userdata('id_user'));
+        var_dump($this->session->userdata('no_kk'));
+        $this->db->where('no_kk', $this->session->userdata('no_kk'));
         // $this->db->order_by($this->id, $this->order);
         return $this->db->get('data_warga')->result();
     }

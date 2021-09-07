@@ -50,29 +50,53 @@ class Pengajuan_surat extends CI_Controller
     {
         $row = $this->Pengajuan_surat_model->get_by_id($id);
         if ($row) {
-            $data = array(
-                'title' => 'Detail Pengajuan Surat '.$row->jenis_surat.' '.$row->nama_pembuat_pengajuan,
-                'content' => 'pengajuan_surat/pengajuan_surat_read',
-                'id_pengajuan' => $row->id_pengajuan,
-                'jenis_surat' => $row->jenis_surat,
-                'nama_pembuat_pengajuan' => $row->nama_pembuat_pengajuan,
-                'nama_yang_meninggal' => $row->nama_yang_meninggal,
-                'tanggal_kematian' => $row->tanggal_kematian,
-                'faktor_kematian' => $row->faktor_kematian,
-                'tanggal_dispensasi' => $row->tanggal_dispensasi,
-                'sampai_tanggal_dispensasi' => $row->sampai_tanggal_dispensasi,
-                'jumlah_hari' => $row->jumlah_hari,
-                'alasan_dispen' => $row->alasan_dispen,
-                'rt_domisili' => $row->rt_domisili,
-                'date_created' => $row->date_created,
-                'date_updated' => $row->date_updated,
-                'id_user' => $row->id_user,
-            );
-            $new_data = array(
-                'status_pengajuan' => 'Sudah Dibaca',
-            );
-            $this->Pengajuan_surat_model->update($row->id_pengajuan, $new_data);
-            $this->load->view('themes/content', $data);
+            if ($this->session->userdata('role') == 'warga') {
+                $data = array(
+                    'title' => 'Detail Pengajuan Surat '.$row->jenis_surat.' '.$row->nama_pembuat_pengajuan,
+                    'content' => 'pengajuan_surat/pengajuan_surat_read',
+                    'id_pengajuan' => $row->id_pengajuan,
+                    'jenis_surat' => $row->jenis_surat,
+                    'nama_pembuat_pengajuan' => $row->nama_pembuat_pengajuan,
+                    'nama_yang_meninggal' => $row->nama_yang_meninggal,
+                    'tanggal_kematian' => $row->tanggal_kematian,
+                    'faktor_kematian' => $row->faktor_kematian,
+                    'tanggal_dispensasi' => $row->tanggal_dispensasi,
+                    'sampai_tanggal_dispensasi' => $row->sampai_tanggal_dispensasi,
+                    'jumlah_hari' => $row->jumlah_hari,
+                    'alasan_dispen' => $row->alasan_dispen,
+                    'rt_domisili' => $row->rt_domisili,
+                    'date_created' => $row->date_created,
+                    'date_updated' => $row->date_updated,
+                    'id_user' => $row->id_user,
+                );
+                $this->load->view('themes/content', $data);
+            } else if ($this->session->userdata('role') == 'rw') {
+                $data = array(
+                    'title' => 'Detail Pengajuan Surat '.$row->jenis_surat.' '.$row->nama_pembuat_pengajuan,
+                    'content' => 'pengajuan_surat/pengajuan_surat_read',
+                    'id_pengajuan' => $row->id_pengajuan,
+                    'jenis_surat' => $row->jenis_surat,
+                    'nama_pembuat_pengajuan' => $row->nama_pembuat_pengajuan,
+                    'nama_yang_meninggal' => $row->nama_yang_meninggal,
+                    'tanggal_kematian' => $row->tanggal_kematian,
+                    'faktor_kematian' => $row->faktor_kematian,
+                    'tanggal_dispensasi' => $row->tanggal_dispensasi,
+                    'sampai_tanggal_dispensasi' => $row->sampai_tanggal_dispensasi,
+                    'jumlah_hari' => $row->jumlah_hari,
+                    'alasan_dispen' => $row->alasan_dispen,
+                    'rt_domisili' => $row->rt_domisili,
+                    'date_created' => $row->date_created,
+                    'date_updated' => $row->date_updated,
+                    'id_user' => $row->id_user,
+                );
+                $new_data = array(
+                    'status_pengajuan' => 'Sudah Dibaca',
+                );
+                $this->Pengajuan_surat_model->update($row->id_pengajuan, $new_data);
+                $this->load->view('themes/content', $data);
+            }
+            
+            
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('pengajuan_surat'));
