@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2021 at 10:28 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- Waktu pembuatan: 08 Sep 2021 pada 03.18
+-- Versi server: 10.4.8-MariaDB
+-- Versi PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_keluhan_warga`
+-- Struktur dari tabel `data_keluhan_warga`
 --
 
 CREATE TABLE `data_keluhan_warga` (
@@ -39,19 +38,22 @@ CREATE TABLE `data_keluhan_warga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_keluhan_warga`
+-- Dumping data untuk tabel `data_keluhan_warga`
 --
 
 INSERT INTO `data_keluhan_warga` (`id_keluhan`, `judul_keluhan`, `deskripsi_keluhan`, `status_keluhan`, `id_user`, `date_created`, `date_updated`) VALUES
-(1, 'Keluhan Suara Berisik', 'Saya memiliki keluhan atas suara berisik yang dihasilkan oleh anak-anak yang sering nongkrong di pinggir jalan', 'Keluhan Baru', 7, '2021-08-13', '2021-08-13'),
-(2, 'Keluhan Jalan Banjir', 'Jalan gang dekat rumah saya selalu banjir, apakah bisa bantu proses untuk memperbaiki nya?', 'Keluhan Baru', 8, '2021-08-14', '2021-08-14'),
-(3, 'Data Sulit Didapatkan', 'Untuk saat ini data yang kami cari sulit untuk didapatkan, untuk itu perlu sistem yang bisa mengatasi kesulitan mengambil data', 'Sudah Dibaca', 10, '2021-08-19', '2021-08-19'),
-(4, 'Sulitnya Mendapatkan Data untuk RT 07', 'Data RT 07 susah untuk di dapatkan karena petugas pemerintahan yang bersangkutan sulit untuk dihubungi.', 'Keluhan Baru', 10, '2021-08-21', '2021-08-21');
+(1, 'Keluhan Suara Berisik', 'Saya memiliki keluhan atas suara berisik yang dihasilkan oleh anak-anak yang sering nongkrong di pinggir jalan', 'Sudah Dibaca', 11, '2021-08-13', '2021-08-13'),
+(2, 'Keluhan Jalan Banjir', 'Jalan gang dekat rumah saya selalu banjir, apakah bisa bantu proses untuk memperbaiki nya?', 'Sudah Dibaca', 11, '2021-08-14', '2021-08-14'),
+(3, 'Data Sulit Didapatkan', 'Untuk saat ini data yang kami cari sulit untuk didapatkan, untuk itu perlu sistem yang bisa mengatasi kesulitan mengambil data', 'Sudah Dibaca', 11, '2021-08-19', '2021-08-19'),
+(4, 'Sulitnya Mendapatkan Data untuk RT 07', 'Data RT 07 susah untuk di dapatkan karena petugas pemerintahan yang bersangkutan sulit untuk dihubungi.', 'Sudah Dibaca', 11, '2021-08-21', '2021-08-21'),
+(5, 'Lapor', 'Lapor', 'Sudah Dibaca', 11, '2021-09-05', '2021-09-05'),
+(6, 'Keluhan Fasilitas', 'Fasilitas masih kurang lengkap untuk pendataan', 'Keluhan Baru', 10, '2021-09-07', '2021-09-07'),
+(7, 'Keluhan Pelayanan', 'Pelayanan masih kurang', 'Keluhan Baru', 8, '2021-09-07', '2021-09-07');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_petugas`
+-- Struktur dari tabel `data_petugas`
 --
 
 CREATE TABLE `data_petugas` (
@@ -64,7 +66,7 @@ CREATE TABLE `data_petugas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_petugas`
+-- Dumping data untuk tabel `data_petugas`
 --
 
 INSERT INTO `data_petugas` (`id_petugas`, `nama_petugas`, `jabatan`, `id_user`, `date_created`, `date_updated`) VALUES
@@ -75,7 +77,7 @@ INSERT INTO `data_petugas` (`id_petugas`, `nama_petugas`, `jabatan`, `id_user`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_training`
+-- Struktur dari tabel `data_training`
 --
 
 CREATE TABLE `data_training` (
@@ -88,7 +90,7 @@ CREATE TABLE `data_training` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_training`
+-- Dumping data untuk tabel `data_training`
 --
 
 INSERT INTO `data_training` (`id`, `no_kk`, `status_kelayakan`, `id_user`, `date_created`, `date_updated`) VALUES
@@ -117,7 +119,7 @@ INSERT INTO `data_training` (`id`, `no_kk`, `status_kelayakan`, `id_user`, `date
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_warga`
+-- Struktur dari tabel `data_warga`
 --
 
 CREATE TABLE `data_warga` (
@@ -147,35 +149,35 @@ CREATE TABLE `data_warga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_warga`
+-- Dumping data untuk tabel `data_warga`
 --
 
 INSERT INTO `data_warga` (`id_data_warga`, `no_kk`, `nik`, `nama_lengkap`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `usia`, `status_perkawinan`, `agama`, `warganegara`, `pendidikan`, `kondisi_pekerjaan`, `pekerjaan_utama`, `jamsostek`, `penghasilan`, `jamsoskes`, `rt`, `status_keluarga`, `date_created`, `date_updated`, `id_user`, `id_petugas`) VALUES
-(12, '3204322111070110', '3204320503470006', 'Yayat Sutaryat', 'L', 'Bandung', '1947-05-03', 74, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-19', '2021-08-19', 10, 0),
-(13, '3204322111070110', '3204325508560012', 'O. Kurniati', 'P', 'Bandung', '1956-12-08', 65, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-19', '2021-08-19', 10, 0),
-(14, '3204322910080009', '3204326311720015', 'Kokom Komariah', 'P', 'Bandung', '1972-11-23', 49, 'Cerai Mati', 'Islam', 'WNI', 'SMP dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3200000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-20', '2021-08-20', 0, 0),
-(15, '3204322910080009', '3204322910080009', 'Gugum Gumilar', 'L', 'Bandung', '1996-03-10', 25, 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-20', '2021-08-20', 0, 0),
-(16, '3204322910080009', '3204322203040010', 'Pebri Galih Permana', 'L', 'Bandung', '2006-03-22', 15, 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-20', '2021-08-20', 0, 0),
-(17, '3204321912180024', '3204321501490002', 'Ondo', 'L', 'Bandung', '1949-01-15', 72, 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-20', '2021-08-20', 10, 0),
-(20, '3204321702100043', '3204320507500014', 'Apo Sujana', 'L', 'Bandung', '1950-07-05', 71, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '800000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(21, '3204321702100043', '3204326003530008', 'Cucu Rodiah', 'L', 'Bandung', '1953-03-20', 68, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(22, '3204320411150024', '3206302703910004', 'Dudi Supriadi', 'L', 'Tasikmalaya', '1991-03-27', 30, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '1000000', 'Bukan Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(23, '3204320411150024', '3204326007930005', 'Tita Septiawati', 'P', 'Bandung', '1993-07-20', 28, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(24, '3204320411150024', '3204324301140004', 'Nayra Vanesa Anjani', 'P', 'Bandung', '2014-01-03', 7, 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(25, '3204322012060026', '3204321512800017', 'Ato Saepudin', 'L', 'Bandung', '1980-12-15', 41, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '1200000', 'Bukan Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(26, '3204322012060026', '3204324809810015', 'Yati Suryati', 'P', 'Bandung', '1981-09-08', 40, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '1000000', 'Bukan Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(27, '3204322012060026', '3204326606110009', 'Sari Nur Padilah', 'P', 'Bandung', '2011-06-26', 10, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(28, '2304320204051729', '3204322612430001', 'Suparman', 'L', 'Bandung', '1946-12-26', 75, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '500000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(29, '2304320204051729', '3204326004700016', 'Siti Sumiati', 'P', 'Bandung', '1970-04-20', 51, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(30, '2304320204051729', '3204322507020024', 'Kurnia Kuswandi P', 'L', 'Bandung', '2002-07-25', 19, 'Belum Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(31, '3204324603500001', '3204324603500001', 'Titing', 'P', 'Bandung', '1950-03-06', 71, 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '750000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(32, '3204321406110090', '3204320101540205', 'Ade Adam', 'L', 'Bandung', '1954-01-01', 67, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '750000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(33, '3204321406110090', '3204324101550148', 'Rohana', 'P', 'Bandung', '1955-01-01', 66, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(34, '3204320204051672', '3204321508410001', 'Lili Suparli', 'L', 'Bandung', '1941-08-15', 80, 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(35, '3204320204051672', '3204322809820003', 'Ari Ismail Saleh', 'L', 'Bandung', '1982-09-22', 39, 'Cerai Hidup', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
-(36, '3204321711160026', '3204320509750007', 'Yayan Sopian', 'L', 'Bandung', '1975-09-05', 46, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
-(37, '3204321711160026', '3204324702830020', 'Ririn Royani', 'P', 'Tasikmalaya', '1983-02-07', 38, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
-(38, '3204321711160026', '3204326010030006', 'Dinda Octaviani Sofyan', 'P', 'Bandung', '2003-10-20', 18, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
+(12, '3204322111070110', '3204320503470006', 'Yayat Sutaryat', 'L', 'Bandung', '1947-05-03', 74, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-19', '2021-08-19', 10, 10),
+(13, '3204322111070110', '3204325508560012', 'O. Kurniati', 'P', 'Bandung', '1956-12-08', 65, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-19', '2021-08-19', 10, 10),
+(14, '3204322910080009', '3204326311720015', 'Kokom Komariah', 'P', 'Bandung', '1972-11-23', 49, 'Cerai Mati', 'Islam', 'WNI', 'SMP dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3200000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-20', '2021-08-20', 10, 10),
+(15, '3204322910080009', '3204322910080009', 'Gugum Gumilar', 'L', 'Bandung', '1996-03-10', 25, 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-20', '2021-08-20', 10, 10),
+(16, '3204322910080009', '3204322203040010', 'Pebri Galih Permana', 'L', 'Bandung', '2006-03-22', 15, 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-20', '2021-08-20', 10, 10),
+(17, '3204321912180024', '3204321501490002', 'Ondo', 'L', 'Bandung', '1949-01-15', 72, 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-20', '2021-08-20', 10, 10),
+(20, '3204321702100043', '3204320507500014', 'Apo Sujana', 'L', 'Bandung', '1950-07-05', 71, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '800000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 10),
+(21, '3204321702100043', '3204326003530008', 'Cucu Rodiah', 'L', 'Bandung', '1953-03-20', 68, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 10),
+(22, '3204320411150024', '3206302703910004', 'Dudi Supriadi', 'L', 'Tasikmalaya', '1991-03-27', 30, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '1000000', 'Bukan Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 10),
+(23, '3204320411150024', '3204326007930005', 'Tita Septiawati', 'P', 'Bandung', '1993-07-20', 28, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 10),
+(24, '3204320411150024', '3204324301140004', 'Nayra Vanesa Anjani', 'P', 'Bandung', '2014-01-03', 7, 'Belum Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 10),
+(25, '3204322012060026', '3204321512800017', 'Ato Saepudin', 'L', 'Bandung', '1980-12-15', 41, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '1200000', 'Bukan Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 10),
+(26, '3204322012060026', '3204324809810015', 'Yati Suryati', 'P', 'Bandung', '1981-09-08', 40, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Bekerja', 'Lainnya', 'Bukan Peserta', '1000000', 'Bukan Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 10),
+(27, '3204322012060026', '3204326606110009', 'Sari Nur Padilah', 'P', 'Bandung', '2011-06-26', 10, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 10),
+(28, '2304320204051729', '3204322612430001', 'Suparman', 'L', 'Bandung', '1946-12-26', 75, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '500000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 10),
+(29, '2304320204051729', '3204326004700016', 'Siti Sumiati', 'P', 'Bandung', '1970-04-20', 51, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 10),
+(30, '2304320204051729', '3204322507020024', 'Kurnia Kuswandi P', 'L', 'Bandung', '2002-07-25', 19, 'Belum Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 10),
+(31, '3204324603500001', '3204324603500001', 'Titing', 'P', 'Bandung', '1950-03-06', 71, 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '750000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 10),
+(32, '3204321406110090', '3204320101540205', 'Ade Adam', 'L', 'Bandung', '1954-01-01', 67, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '750000', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 10),
+(33, '3204321406110090', '3204324101550148', 'Rohana', 'P', 'Bandung', '1955-01-01', 66, 'Kawin', 'Islam', 'WNI', 'SD dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Istri', '2021-08-21', '2021-08-21', 10, 10),
+(34, '3204320204051672', '3204321508410001', 'Lili Suparli', 'L', 'Bandung', '1941-08-15', 80, 'Cerai Mati', 'Islam', 'WNI', 'SD dan Sederajat', 'Tidak Bekerja', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '4', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 10),
+(35, '3204320204051672', '3204322809820003', 'Ari Ismail Saleh', 'L', 'Bandung', '1982-09-22', 39, 'Cerai Hidup', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Bukan Peserta', '4', 'Anak', '2021-08-21', '2021-08-21', 10, 10),
+(36, '3204321711160026', '3204320509750007', 'Yayan Sopian', 'L', 'Bandung', '1975-09-05', 46, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 10),
+(37, '3204321711160026', '3204324702830020', 'Ririn Royani', 'P', 'Tasikmalaya', '1983-02-07', 38, 'Kawin', 'Islam', 'WNI', 'SMP dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 10),
+(38, '3204321711160026', '3204326010030006', 'Dinda Octaviani Sofyan', 'P', 'Bandung', '2003-10-20', 18, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 10),
 (39, '3204321711160026', '3204321703110001', 'Razka Bayhaqi Sofyan', 'L', 'Bandung', '2011-03-17', 10, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
 (40, '3204322502060188', '3204322109600006', 'H. Dude Satari', 'L', 'Bandung', '1960-09-21', 61, 'Kawin', 'Islam', 'WNI', 'Diploma 1-3', 'Tidak Bekerja', 'Pensiunan', 'Bukan Peserta', '3500000', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 0),
 (41, '3204322502060188', '3204326303670010', 'Hj. Awang', 'P', 'Bandung', '1967-03-23', 54, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 0),
@@ -213,12 +215,14 @@ INSERT INTO `data_warga` (`id_data_warga`, `no_kk`, `nik`, `nama_lengkap`, `jeni
 (73, '3204322607680003', '3204320808910004', 'Reggy Ferdian Ryana', 'L', 'Bandung', '1991-08-08', 30, 'Belum Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Bekerja', 'Lainnya', 'Peserta', '3000000', 'Peserta', '1', 'Anak', '2021-08-21', '2021-08-21', 10, 0),
 (83, '3204323010130021', '3204320702840018', 'Yadi Rusyadi', 'L', 'Bandung', '1984-02-07', 37, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Sedang Mencari Pekerjaan', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Kepala Keluarga', '2021-09-04', '2021-09-04', 10, 0),
 (84, '3204323010130021', '3204325004890014', 'Hasanah Munawaroh', 'P', 'Tasikmalaya', '1989-04-10', 32, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-09-04', '2021-09-04', 10, 0),
-(85, '3204323010130021', '3204322310150002', 'Yusril Fardan Fairus', 'L', 'Bandung', '2015-10-23', 5, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-09-04', '2021-09-04', 10, 0);
+(85, '3204323010130021', '3204322310150002', 'Yusril Fardan Fairus', 'L', 'Bandung', '2015-10-23', 5, 'Belum Kawin', 'Islam', 'WNI', 'Lainnya', 'Bersekolah', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Anak', '2021-09-04', '2021-09-04', 10, 0),
+(86, '3204320301200007', '3204321811720003', 'Rofiq Abdul Manaf', 'L', 'Bandung', '1972-11-18', 48, 'Kawin', 'Islam', 'WNI', 'Diploma 1-3', 'Bekerja', 'Lainnya', 'Peserta', '0', 'Peserta', '1', 'Kepala Keluarga', '2021-08-21', '2021-08-21', 10, 10),
+(87, '3204320301200007', '3204321209750005', 'Popi Puspawida', 'P', 'Bandung', '1975-09-12', 46, 'Kawin', 'Islam', 'WNI', 'SMA dan Sederajat', 'Ibu Rumah Tangga', 'Lainnya', 'Bukan Peserta', '0', 'Peserta', '1', 'Istri', '2021-08-21', '2021-08-21', 10, 10);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `desk_keluarga`
+-- Struktur dari tabel `desk_keluarga`
 --
 
 CREATE TABLE `desk_keluarga` (
@@ -251,7 +255,7 @@ CREATE TABLE `desk_keluarga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `desk_keluarga`
+-- Dumping data untuk tabel `desk_keluarga`
 --
 
 INSERT INTO `desk_keluarga` (`id_desk`, `no_kk`, `tempat_tinggal`, `status_lahan`, `luas_lantai`, `luas_lahan`, `jenis_lantai`, `dinding`, `jendela`, `genteng`, `penerangan`, `energi_memasak`, `tps`, `mck`, `sumber_airmandi`, `fasilitas_bab`, `sumber_airminum`, `pembuangan_limbah`, `bawah_sutet`, `bantaran_sungai`, `lerang`, `kondisi_rumah`, `date_created`, `date_updated`, `id_user`, `id_petugas`) VALUES
@@ -275,12 +279,13 @@ INSERT INTO `desk_keluarga` (`id_desk`, `no_kk`, `tempat_tinggal`, `status_lahan
 (21, '3207361812140002', 'Milik Sendiri', 'Milik Sendiri', '50', '50', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Tangki/Instalasi Pengelolaan Limbah', 'Tidak', 'Tidak', 'Tidak', 'Tidak Kumuh', '2021-08-21', '2021-08-21', 10, 0),
 (22, '3204323103057784', 'Milik Sendiri', 'Milik Sendiri', '56', '56', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Tangki/Instalasi Pengelolaan Limbah', 'Tidak', 'Tidak', 'Tidak', 'Tidak Kumuh', '2021-08-21', '2021-08-21', 10, 0),
 (23, '3204322607680003', 'Milik Sendiri', 'Milik Sendiri', '98', '98', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Sawah/Kolam/Sungai/Drainase/Laut', 'Tidak', 'Tidak', 'Ya', 'Tidak Kumuh', '2021-08-21', '2021-08-21', 10, 0),
-(26, '3204323010130021', 'Milik Sendiri', 'Milik Sendiri', '', '98', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Tangki/Instalasi Pengelolaan Limbah', 'Tidak', 'Tidak', 'Tidak', 'Tidak Kumuh', '2021-09-04', '2021-09-04', 10, 0);
+(26, '3204323010130021', 'Milik Sendiri', 'Milik Sendiri', '', '98', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Tangki/Instalasi Pengelolaan Limbah', 'Tidak', 'Tidak', 'Tidak', 'Tidak Kumuh', '2021-09-04', '2021-09-04', 10, 0),
+(27, '3204320301200007', 'Milik Sendiri', 'Milik Sendiri', '', '126', 'Keramik', 'Semen/Beton/Kayu Berkualitas Tinggi', 'Ada, Berfungsi', 'Genteng', 'Listrik PLN', 'Gas Kota/LPG/Biogas', 'Dibakar', 'Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Jamban Sendiri', 'Ledeng/Perpipaan Berbayar/Air Isi Ulang/Kemasan', 'Tangki/Instalasi Pengelolaan Limbah', 'Tidak', 'Tidak', 'Tidak', 'Tidak Kumuh', '2021-09-04', '2021-09-04', 10, 10);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laporan_data_warga`
+-- Struktur dari tabel `laporan_data_warga`
 --
 
 CREATE TABLE `laporan_data_warga` (
@@ -301,7 +306,7 @@ CREATE TABLE `laporan_data_warga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `laporan_data_warga`
+-- Dumping data untuk tabel `laporan_data_warga`
 --
 
 INSERT INTO `laporan_data_warga` (`id_laporandata_warga`, `rt_satu`, `rt_dua`, `rt_tiga`, `rt_empat`, `rt_lima`, `rt_enam`, `rt_tujuh`, `rt_delapan`, `jumlah`, `status_lapor`, `date_created`, `date_updated`, `id_user`) VALUES
@@ -311,7 +316,7 @@ INSERT INTO `laporan_data_warga` (`id_laporandata_warga`, `rt_satu`, `rt_dua`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penerima_bantuan`
+-- Struktur dari tabel `penerima_bantuan`
 --
 
 CREATE TABLE `penerima_bantuan` (
@@ -328,10 +333,37 @@ CREATE TABLE `penerima_bantuan` (
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `penerima_bantuan`
+--
+
+INSERT INTO `penerima_bantuan` (`id_penerima`, `no_kk`, `nik`, `nama_penerima`, `rt`, `jenis_bantuan`, `status`, `tanggal_generate_penerima`, `date_created`, `date_updated`, `id_user`) VALUES
+(1, '3204322111070110', '3204320503470006', 'Yayat Sutaryat', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(2, '3204322910080009', '3204326311720015', 'Kokom Komariah', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(3, '3204321912180024', '3204321501490002', 'Ondo', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(4, '3204321702100043', '3204320507500014', 'Apo Sujana', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(5, '3204320411150024', '3206302703910004', 'Dudi Supriadi', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(6, '3204322012060026', '3204321512800017', 'Ato Saepudin', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(7, '2304320204051729', '3204322612430001', 'Suparman', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(8, '3204324603500001', '3204324603500001', 'Titing', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(9, '3204321406110090', '3204320101540205', 'Ade Adam', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(10, '3204320204051672', '3204321508410001', 'Lili Suparli', '4', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(11, '3204321711160026', '3204320509750007', 'Yayan Sopian', '1', 'PKH', 'Tidak Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(12, '3204322502060188', '3204322109600006', 'H. Dude Satari', '1', 'PKH', 'Tidak Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(13, '3204322110130020', '3204321101920002', 'Hanhan Burhanudin', '1', 'PKH', 'Tidak Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(14, '3204322711120162', '3204080603520002', 'Ade Ruspandi', '1', 'PKH', 'Tidak Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(15, '3204320104058149', '3204322707680007', 'Ayi Hidir Kosasih', '1', 'PKH', 'Tidak Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(16, '3204321210120038', '3204321111770006', 'Deni Andriyanto', '1', 'PKH', 'Tidak Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(17, '3204321802130012', '3204321602840004', 'Rudiyono', '1', 'PKH', 'Tidak Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(18, '3207361812140002', '3204321612790003', 'Dede Yuliana', '1', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(19, '3204323103057784', '3204323107690004', 'Achmad Hidayat', '1', 'PKH', 'Tidak Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(20, '3204322607680003', '3204326105690017', 'Atin Rohayatin', '1', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10),
+(21, '3204323010130021', '3204320702840018', 'Yadi Rusyadi', '1', 'PKH', 'Layak', '2021-09-05', '2021-09-05', 2021, 10);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengajuan_surat`
+-- Struktur dari tabel `pengajuan_surat`
 --
 
 CREATE TABLE `pengajuan_surat` (
@@ -353,19 +385,20 @@ CREATE TABLE `pengajuan_surat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengajuan_surat`
+-- Dumping data untuk tabel `pengajuan_surat`
 --
 
 INSERT INTO `pengajuan_surat` (`id_pengajuan`, `jenis_surat`, `nama_pembuat_pengajuan`, `nama_yang_meninggal`, `tanggal_kematian`, `faktor_kematian`, `tanggal_dispensasi`, `sampai_tanggal_dispensasi`, `jumlah_hari`, `alasan_dispen`, `rt_domisili`, `status_pengajuan`, `date_created`, `date_updated`, `id_user`) VALUES
 (1, 'surat kematian', 'nama', 'nama', '2021-08-12', 'sakit', '0000-00-00', '0000-00-00', '-', '-', '1', 'Sudah Dibaca', '2021-08-13', '2021-08-13', 7),
 (2, 'surat kematian', 'nama', 'nama', '2021-08-13', 'sakit', '0000-00-00', '0000-00-00', '-', '-', '1', 'Sudah Dibaca', '2021-08-13', '2021-08-13', 7),
 (3, 'surat domisili', 'nama', '-', '0000-00-00', '-', '0000-00-00', '0000-00-00', '-', '-', '1', 'Sudah Dibaca', '2021-08-13', '2021-08-13', 7),
-(4, 'surat dispensasi', 'nama', '-', '0000-00-00', '-', '2021-08-12', '2021-08-13', '2', 'Sakit', '1', 'Sudah Dibaca', '2021-08-13', '2021-08-13', 7);
+(4, 'surat dispensasi', 'nama', '-', '0000-00-00', '-', '2021-08-12', '2021-08-13', '2', 'Sakit', '1', 'Sudah Dibaca', '2021-08-13', '2021-08-13', 7),
+(5, 'surat dispensasi', 'Syahrul Firdaus', '-', '0000-00-00', '-', '2021-09-14', '2021-09-16', '3', 'Dispensasi diajukan karena ada kegiatan pengabdian masyarakat di RW 01 Bojongpeuteuy', '1', 'Sudah Dibaca', '2021-09-05', '2021-09-05', 11);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `token`
+-- Struktur dari tabel `token`
 --
 
 CREATE TABLE `token` (
@@ -376,7 +409,7 @@ CREATE TABLE `token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `token`
+-- Dumping data untuk tabel `token`
 --
 
 INSERT INTO `token` (`id`, `token`, `id_user`, `date_created`) VALUES
@@ -386,7 +419,7 @@ INSERT INTO `token` (`id`, `token`, `id_user`, `date_created`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -402,13 +435,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `no_hp`, `no_kk`, `role`, `date_created`, `date_updated`) VALUES
 (1, 'administrator', '10c1212f8f6fe32a840633a140bf5088262e491d', 'admin@pendataankader.id', '089664303980', '2147483647', 'administrator', '2021-08-11', '2021-08-11'),
 (7, 'tisnakelana', 'eff388efdd844ff4d4628fdd5283065d2459a65d', 'tisna@pendataankader.id', '089664303980', '320432999999999', 'rw', '2021-08-12', '2021-08-12'),
-(8, 'rofiq', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', 'rioagungfirmansyah@gmail.com', '089659086915', '3204320301200007', 'warga', '2021-08-13', '2021-08-13'),
+(8, 'rofiq', '3e1d480cf7cbdd044d5dee46798ceaf2b0047c5d', 'rioagungfirmansyah@gmail.com', '089659086915', '3204320301200007', 'warga', '2021-08-13', '2021-08-13'),
 (10, 'kaderpopi', 'b5316ba4a6ccef4075192c2d38fec57da801afc8', 'popi@gmail.com', '0891234567890', '3204320301200007', 'kader', '2021-08-13', '2021-08-13'),
 (11, 'dudesatari', 'a9e2d1b99462ae535cf0271c48fb57ee1926d377', 'dudesatari@gmail.com', '0891234567890', '3204322502060188', 'warga', '2021-08-21', '2021-08-21');
 
@@ -417,28 +450,28 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `no_hp`, `no_kk`
 --
 
 --
--- Indexes for table `data_keluhan_warga`
+-- Indeks untuk tabel `data_keluhan_warga`
 --
 ALTER TABLE `data_keluhan_warga`
   ADD PRIMARY KEY (`id_keluhan`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `data_petugas`
+-- Indeks untuk tabel `data_petugas`
 --
 ALTER TABLE `data_petugas`
   ADD PRIMARY KEY (`id_petugas`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `data_training`
+-- Indeks untuk tabel `data_training`
 --
 ALTER TABLE `data_training`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `data_warga`
+-- Indeks untuk tabel `data_warga`
 --
 ALTER TABLE `data_warga`
   ADD PRIMARY KEY (`id_data_warga`),
@@ -447,7 +480,7 @@ ALTER TABLE `data_warga`
   ADD KEY `id_petugas` (`id_petugas`);
 
 --
--- Indexes for table `desk_keluarga`
+-- Indeks untuk tabel `desk_keluarga`
 --
 ALTER TABLE `desk_keluarga`
   ADD PRIMARY KEY (`id_desk`),
@@ -455,14 +488,14 @@ ALTER TABLE `desk_keluarga`
   ADD KEY `id_petugas` (`id_petugas`);
 
 --
--- Indexes for table `laporan_data_warga`
+-- Indeks untuk tabel `laporan_data_warga`
 --
 ALTER TABLE `laporan_data_warga`
   ADD PRIMARY KEY (`id_laporandata_warga`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `penerima_bantuan`
+-- Indeks untuk tabel `penerima_bantuan`
 --
 ALTER TABLE `penerima_bantuan`
   ADD PRIMARY KEY (`id_penerima`),
@@ -470,85 +503,85 @@ ALTER TABLE `penerima_bantuan`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `pengajuan_surat`
+-- Indeks untuk tabel `pengajuan_surat`
 --
 ALTER TABLE `pengajuan_surat`
   ADD PRIMARY KEY (`id_pengajuan`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `token`
+-- Indeks untuk tabel `token`
 --
 ALTER TABLE `token`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `data_keluhan_warga`
+-- AUTO_INCREMENT untuk tabel `data_keluhan_warga`
 --
 ALTER TABLE `data_keluhan_warga`
-  MODIFY `id_keluhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_keluhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `data_petugas`
+-- AUTO_INCREMENT untuk tabel `data_petugas`
 --
 ALTER TABLE `data_petugas`
   MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `data_training`
+-- AUTO_INCREMENT untuk tabel `data_training`
 --
 ALTER TABLE `data_training`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `data_warga`
+-- AUTO_INCREMENT untuk tabel `data_warga`
 --
 ALTER TABLE `data_warga`
-  MODIFY `id_data_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id_data_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
--- AUTO_INCREMENT for table `desk_keluarga`
+-- AUTO_INCREMENT untuk tabel `desk_keluarga`
 --
 ALTER TABLE `desk_keluarga`
-  MODIFY `id_desk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_desk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `laporan_data_warga`
+-- AUTO_INCREMENT untuk tabel `laporan_data_warga`
 --
 ALTER TABLE `laporan_data_warga`
   MODIFY `id_laporandata_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `penerima_bantuan`
+-- AUTO_INCREMENT untuk tabel `penerima_bantuan`
 --
 ALTER TABLE `penerima_bantuan`
-  MODIFY `id_penerima` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penerima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `pengajuan_surat`
+-- AUTO_INCREMENT untuk tabel `pengajuan_surat`
 --
 ALTER TABLE `pengajuan_surat`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `token`
+-- AUTO_INCREMENT untuk tabel `token`
 --
 ALTER TABLE `token`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
