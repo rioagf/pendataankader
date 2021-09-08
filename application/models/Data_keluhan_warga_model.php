@@ -19,16 +19,18 @@ class Data_keluhan_warga_model extends CI_Model
     function get_all()
     {
         if ($this->session->userdata('role') == 'rw') {
-            $this->db->join('data_warga', 'data_warga.id_user = data_keluhan_warga.id_user');
+            $this->db->join('user', 'user.id_user = data_keluhan_warga.id_user');
+            $this->db->join('data_warga', 'data_warga.no_kk = user.no_kk');
             $this->db->where('data_warga.status_keluarga', 'Kepala Keluarga');
             // $this->db->order_by($this->id, $this->order);
             return $this->db->get($this->table)->result();
         } else if ($this->session->userdata('role') == 'warga') {
             $where = array(
-                'data_warga.status_keluarga' => 'kepala keluarga',
+                'data_warga.status_keluarga' => 'Kepala Keluarga',
                 'data_keluhan_warga.id_user'   => $this->session->userdata('id_user'),
             );
-            $this->db->join('data_warga', 'data_warga.id_user = data_keluhan_warga.id_user');
+            $this->db->join('user', 'user.id_user = data_keluhan_warga.id_user');
+            $this->db->join('data_warga', 'data_warga.no_kk = user.no_kk');
             $this->db->where($where);
             $this->db->order_by($this->id, $this->order);
             return $this->db->get($this->table)->result();
@@ -37,7 +39,9 @@ class Data_keluhan_warga_model extends CI_Model
                 'data_petugas.jabatan' => 'Kader',
                 'data_keluhan_warga.id_user'   => $this->session->userdata('id_user'),
             );
-            $this->db->join('data_petugas', 'data_petugas.id_user = data_keluhan_warga.id_user');
+            $this->db->join('user', 'user.id_user = data_keluhan_warga.id_user');
+            // $this->db->join('data_warga', 'data_warga.no_kk = user.no_kk');
+            $this->db->join('data_petugas', 'data_petugas.id_user = user.id_user');
             $this->db->where($where);
             $this->db->order_by($this->id, $this->order);
             return $this->db->get($this->table)->result();
@@ -51,8 +55,9 @@ class Data_keluhan_warga_model extends CI_Model
     // get data by id
     function get_by_id($id)
     {
-        $this->db->join('data_warga', 'data_warga.id_user = data_keluhan_warga.id_user');
-        $this->db->where('data_warga.id_user', $id);
+        $this->db->join('user', 'user.id_user = data_keluhan_warga.id_user');
+        $this->db->join('data_warga', 'data_warga.no_kk = user.no_kk');
+        $this->db->where('data_keluhan_warga.id_keluhan', $id);
         return $this->db->get($this->table)->row();
     }
     

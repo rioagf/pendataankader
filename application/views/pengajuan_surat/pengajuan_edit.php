@@ -1,4 +1,4 @@
-<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('../assets/img/8.jpg');background-size: cover; background-attachment: fixed;">
+<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('../assets/img/8.jpg');background-size: cover; background-attachment: fixed; padding: 75px;">
     <div class="container" style="max-width: 850px;">
         <div class="intro">
             <h2 class="text-center">Pengajuan Surat</h2>
@@ -80,7 +80,7 @@
                     </a>
                 </div>
                 <div class="col text-center" style="width: 33.3333%;">
-                    <a href="<?= base_url('pengajuan_surat') ?>" style="color: rgb(255,255,255);">
+                    <a href="<?= base_url('pengajuan_surat') ?>" onclick="return confirm('Anda yakin mau Keluar ?')" style="color: rgb(255,255,255);">
                         <i class="fa fa-sign-out" style="padding: 0;font-size: 26px;width: 100%;"></i>
                         <p style="margin-bottom: 0;">LOGOUT</p>
                     </a>

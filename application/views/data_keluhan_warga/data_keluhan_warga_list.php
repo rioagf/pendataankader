@@ -1,4 +1,4 @@
-<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('assets/img/8.jpg');background-size: cover; background-attachment: fixed;">
+<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('assets/img/8.jpg');background-size: cover; background-attachment: fixed; padding: 75px;">
     <div class="container" style="max-width: 850px;">
         <?php 
             if($this->session->flashdata('message') !='')
@@ -25,13 +25,13 @@
                 </thead>
                 <tbody>
                     <?php foreach ($data_keluhan_warga_data as $data_keluhan_warga) { ?>
-                        <tr>
+                        <tr <?php if ($data_keluhan_warga->status_keluhan == "Keluhan Baru"){ echo 'style="font-weight: 600;"'; } ?>>
                             <td><?php echo ++$start ?></td>
                             <td><?php echo $data_keluhan_warga->judul_keluhan ?></td>
-                            <td><?php echo character_limiter($data_keluhan_warga->deskripsi_keluhan, 15) ?></td>
+                            <td><?php echo character_limiter($data_keluhan_warga->deskripsi_keluhan, 50) ?></td>
                             <td><?php echo date("d F Y", strtotime($data_keluhan_warga->date_created)); ?></td>
                             <td>
-                                <a class="btn btn-sm btn-primary" href="<?= site_url('data_keluhan_warga/read/'.$data_keluhan_warga->id_user) ?>">
+                                <a class="btn btn-sm btn-primary" href="<?= site_url('data_keluhan_warga/read/'.$data_keluhan_warga->id_keluhan) ?>">
                                     <i class="fa fa-book"></i>
                                 </a>
                             </td>
@@ -60,7 +60,7 @@
                         </a>
                     </div>
                     <div class="col text-center" style="width: 33.3333%;">
-                        <a href="<?= base_url('auth/logout') ?>" style="color: rgb(255,255,255);">
+                        <a href="<?= base_url('auth/logout') ?>" onclick="return confirm('Anda yakin mau Keluar ?')" style="color: rgb(255,255,255);">
                             <i class="fa fa-sign-out" style="padding: 0;font-size: 26px;width: 100%;"></i>
                             <p style="margin-bottom: 0;">LOGOUT</p>
                         </a>

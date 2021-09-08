@@ -35,6 +35,8 @@ class Penerima_bantuan extends CI_Controller
     $row = $this->Penerima_bantuan_model->get_by_id($id);
     if ($row) {
       $data = array(
+        'title' => 'Detail Penerima Bantuan',
+        'content' => 'penerima_bantuan/penerima_bantuan_read',
         'id_penerima' => $row->id_penerima,
         'no_kk' => $row->no_kk,
         'nik' => $row->nik,
@@ -46,7 +48,7 @@ class Penerima_bantuan extends CI_Controller
         'date_updated' => $row->date_updated,
         'id_user' => $row->id_user,
       );
-      $this->load->view('penerima_bantuan/penerima_bantuan_read', $data);
+      $this->load->view('themes/content', $data);
     } else {
       $this->session->set_flashdata('message', 'Record Not Found');
       redirect(site_url('penerima_bantuan'));

@@ -1,4 +1,4 @@
-<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('assets/img/8.jpg');background-size: cover; background-attachment: fixed;">
+<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('assets/img/8.jpg');background-size: cover; background-attachment: fixed; padding: 75px;">
     <div class="container" style="max-width: 850px;">
         <div class="intro">
             <?php 
@@ -25,7 +25,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($pengajuan_surat_data as $pengajuan_surat) { ?>
-                        <tr>
+                        <tr <?php if ($pengajuan_surat->status_pengajuan == "Pengajuan Baru") { echo 'style="font-weight: 600"'; } ?>>
                             <td><?php echo ++$start ?></td>
                             <td><?php echo $pengajuan_surat->jenis_surat ?></td>
                             <td><?php echo $pengajuan_surat->nama_pembuat_pengajuan ?></td>

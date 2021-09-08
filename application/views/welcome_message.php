@@ -1,4 +1,4 @@
-<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url(&quot;assets/img/8.jpg&quot;);background-size: cover;">
+<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url(&quot;assets/img/8.jpg&quot;);background-size: cover; padding: 75px;">
 	<?php
 	// Count Pengajuan Baru
 	$this->db->where('status_pengajuan', 'Pengajuan Baru');

@@ -157,6 +157,7 @@ class Pengajuan_surat extends CI_Controller
                 'jumlah_hari' => $this->input->post('jumlah_hari',TRUE),
                 'alasan_dispen' => $this->input->post('alasan_dispen',TRUE),
                 'rt_domisili' => $this->input->post('rt_domisili',TRUE),
+                'status_pengajuan' => 'Pengajuan Baru',
                 'date_created' => date('Y-m-d'),
                 'date_updated' => date('Y-m-d'),
                 'id_user' => $this->session->userdata('id_user'),
@@ -176,6 +177,7 @@ class Pengajuan_surat extends CI_Controller
                 'jumlah_hari' => '-',
                 'alasan_dispen' => '-',
                 'rt_domisili' => $this->input->post('rt_domisili',TRUE),
+                'status_pengajuan' => 'Pengajuan Baru',
                 'date_created' => date('Y-m-d'),
                 'date_updated' => date('Y-m-d'),
                 'id_user' => $this->session->userdata('id_user'),
@@ -223,18 +225,19 @@ class Pengajuan_surat extends CI_Controller
             $this->update($this->input->post('id_pengajuan', TRUE));
         } else {
             $data = array(
-              'jenis_surat' => $this->input->post('jenis_surat',TRUE),
-              'nama_pembuat_pengajuan' => $this->input->post('nama_pembuat_pengajuan',TRUE),
-              'nama_yang_meninggal' => $this->input->post('nama_yang_meninggal',TRUE),
-              'tanggal_kematian' => $this->input->post('tanggal_kematian',TRUE),
-              'faktor_kematian' => $this->input->post('faktor_kematian',TRUE),
-              'tanggal_dispensasi' => $this->input->post('tanggal_dispensasi',TRUE),
-              'sampai_tanggal_dispensasi' => $this->input->post('sampai_tanggal_dispensasi',TRUE),
-              'jumlah_hari' => $this->input->post('jumlah_hari',TRUE),
-              'alasan_dispen' => $this->input->post('alasan_dispen',TRUE),
-              'rt_domisili' => $this->input->post('rt_domisili',TRUE),
-              'date_updated' => date('Y-m-d'),
-          );
+                'jenis_surat' => $this->input->post('jenis_surat',TRUE),
+                'nama_pembuat_pengajuan' => $this->input->post('nama_pembuat_pengajuan',TRUE),
+                'nama_yang_meninggal' => $this->input->post('nama_yang_meninggal',TRUE),
+                'tanggal_kematian' => $this->input->post('tanggal_kematian',TRUE),
+                'faktor_kematian' => $this->input->post('faktor_kematian',TRUE),
+                'tanggal_dispensasi' => $this->input->post('tanggal_dispensasi',TRUE),
+                'sampai_tanggal_dispensasi' => $this->input->post('sampai_tanggal_dispensasi',TRUE),
+                'jumlah_hari' => $this->input->post('jumlah_hari',TRUE),
+                'alasan_dispen' => $this->input->post('alasan_dispen',TRUE),
+                'rt_domisili' => $this->input->post('rt_domisili',TRUE),
+                'status_pengajuan' => 'Pengajuan Baru',
+                'date_updated' => date('Y-m-d'),
+            );
 
             $this->Pengajuan_surat_model->update($this->input->post('id_pengajuan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');

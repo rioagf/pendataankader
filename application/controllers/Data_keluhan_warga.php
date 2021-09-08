@@ -33,21 +33,37 @@ class Data_keluhan_warga extends CI_Controller
     {
         $row = $this->Data_keluhan_warga_model->get_by_id($id);
         if ($row) {
-            $data = array(
-                'title' => 'Lapor Keluhan',
-                'content' => 'data_keluhan_warga/data_keluhan_warga_read',
-                'id_keluhan' => $row->id_keluhan,
-                'judul_keluhan' => $row->judul_keluhan,
-                'deskripsi_keluhan' => $row->deskripsi_keluhan,
-                'nama_lengkap' => $row->nama_lengkap,
-                'date_created' => $row->date_created,
-                'date_updated' => $row->date_updated,
-            );
-            $data_new = array(
-                'status_keluhan' => 'Sudah Dibaca',
-            );
-            $this->Data_keluhan_warga_model->update($row->id_keluhan, $data_new);
-            $this->load->view('themes/content', $data);
+            if ($this->session->userdata('role') == 'rw') {
+                $data = array(
+                    'title' => 'Lapor Keluhan',
+                    'content' => 'data_keluhan_warga/data_keluhan_warga_read',
+                    'id_keluhan' => $row->id_keluhan,
+                    'judul_keluhan' => $row->judul_keluhan,
+                    'deskripsi_keluhan' => $row->deskripsi_keluhan,
+                    'nama_lengkap' => $row->nama_lengkap,
+                    'username' => $row->username,
+                    'date_created' => $row->date_created,
+                    'date_updated' => $row->date_updated,
+                );
+                $data_new = array(
+                    'status_keluhan' => 'Sudah Dibaca',
+                );
+                $this->Data_keluhan_warga_model->update($row->id_keluhan, $data_new);
+                $this->load->view('themes/content', $data);
+            } else {
+                $data = array(
+                    'title' => 'Lapor Keluhan',
+                    'content' => 'data_keluhan_warga/data_keluhan_warga_read',
+                    'id_keluhan' => $row->id_keluhan,
+                    'judul_keluhan' => $row->judul_keluhan,
+                    'deskripsi_keluhan' => $row->deskripsi_keluhan,
+                    'nama_lengkap' => $row->nama_lengkap,
+                    'username' => $row->username,
+                    'date_created' => $row->date_created,
+                    'date_updated' => $row->date_updated,
+                );
+                $this->load->view('themes/content', $data);
+            }
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('data_keluhan_warga'));
@@ -152,12 +168,12 @@ class Data_keluhan_warga extends CI_Controller
 
     public function _rules() 
     {
-       $this->form_validation->set_rules('judul_keluhan', 'judul keluhan', 'trim|required');
-       $this->form_validation->set_rules('deskripsi_keluhan', 'deskripsi keluhan', 'trim|required');
+     $this->form_validation->set_rules('judul_keluhan', 'judul keluhan', 'trim|required');
+     $this->form_validation->set_rules('deskripsi_keluhan', 'deskripsi keluhan', 'trim|required');
 
-       $this->form_validation->set_rules('id_keluhan', 'id_keluhan', 'trim');
-       $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
-   }
+     $this->form_validation->set_rules('id_keluhan', 'id_keluhan', 'trim');
+     $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+ }
 
 }
 
