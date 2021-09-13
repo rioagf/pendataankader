@@ -10,7 +10,9 @@
             }
             ?>
             <h2 class="text-center">Laporan Data Warga</h2>
-            <a href="<?= base_url('laporan_data_warga/generate') ?>" onclick="return confirm('Anda yakin mau generate data ?')" class="btn btn-primary" type="button" style="background: rgba(0,123,255,0);color: rgb(0,0,0);border-radius: 0px;border-width: 0px;border-bottom-width: 1px;border-bottom-color: rgb(0,0,0);margin-bottom: 10px;">Generate Data</a>
+            <?php if ($this->session->userdata('role') == 'kader'): ?>
+                <a href="<?= base_url('laporan_data_warga/generate') ?>" onclick="return confirm('Anda yakin mau generate data ?')" class="btn btn-primary" type="button" style="background: rgba(0,123,255,0);color: rgb(0,0,0);border-radius: 0px;border-width: 0px;border-bottom-width: 1px;border-bottom-color: rgb(0,0,0);margin-bottom: 10px;">Generate Data</a>
+            <?php endif ?>
             <hr>
         </div>
         <div style="background-color: #ffffff !important; padding: 25px;">
@@ -35,10 +37,10 @@
                                 <a class="btn btn-sm btn-primary" href="<?= site_url('laporan_data_warga/read/'.$laporan_data_warga->id_laporandata_warga) ?>"><i class="fa fa-book"></i></a>
                                 <?php if ($this->session->userdata('role') == 'kader') { ?>
                                     <?php if ($laporan_data_warga->status_lapor == 'Belum Dilaporkan') { ?>
-                                <a class="btn btn-sm btn-secondary" href="<?= site_url('laporan_data_warga/laporkan/'.$laporan_data_warga->id_laporandata_warga) ?>" onclick="return confirm('Anda yakin mau melaporkan item ini ?')"><i class="fa fa-paper-plane"></i></a>
-                            <?php } ?>
-                                <a class="btn btn-sm btn-danger" href="<?= site_url('laporan_data_warga/delete/'.$laporan_data_warga->id_laporandata_warga) ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><i class="fa fa-trash"></i></a>
-                            <?php } ?> 
+                                        <a class="btn btn-sm btn-secondary" href="<?= site_url('laporan_data_warga/laporkan/'.$laporan_data_warga->id_laporandata_warga) ?>" onclick="return confirm('Anda yakin mau melaporkan item ini ?')"><i class="fa fa-paper-plane"></i></a>
+                                    <?php } ?>
+                                    <a class="btn btn-sm btn-danger" href="<?= site_url('laporan_data_warga/delete/'.$laporan_data_warga->id_laporandata_warga) ?>" onclick="return confirm('Anda yakin mau menghapus item ini ?')"><i class="fa fa-trash"></i></a>
+                                <?php } ?> 
                             </td>
                         </tr>
                     <?php } ?>

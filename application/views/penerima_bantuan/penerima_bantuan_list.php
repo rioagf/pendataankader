@@ -10,7 +10,9 @@
             }
             ?>
             <h2 class="text-center">Laporan Data Penerima Bantuan</h2>
-            <a href="<?= base_url('penerima_bantuan/generate_data') ?>" onclick="return confirm('Anda yakin mau generate data ?')" class="btn btn-primary" type="button" style="background: rgba(0,123,255,0);color: rgb(0,0,0);border-radius: 0px;border-width: 0px;border-bottom-width: 1px;border-bottom-color: rgb(0,0,0);margin-bottom: 10px;">Generate Data</a>
+            <?php if ($this->session->userdata('role') == 'kader'): ?>
+                <a href="<?= base_url('penerima_bantuan/generate_data') ?>" onclick="return confirm('Anda yakin mau generate data ?')" class="btn btn-primary" type="button" style="background: rgba(0,123,255,0);color: rgb(0,0,0);border-radius: 0px;border-width: 0px;border-bottom-width: 1px;border-bottom-color: rgb(0,0,0);margin-bottom: 10px;">Generate Data</a>
+            <?php endif ?>
             <hr>
         </div>
         <div style="background-color: #ffffff !important; padding: 25px;">
