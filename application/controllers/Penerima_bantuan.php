@@ -116,19 +116,21 @@ class Penerima_bantuan extends CI_Controller
 
       //LAYAK
         $usia_layak = $this->Penerima_bantuan_model->usia_layak($data->usia);
-        $pekerjaan_layak = $this->Penerima_bantuan_model->pekerjaan_layak($data->kondisi_pekerjaan);
-        $pekerjaan_tidak_layak = $this->Penerima_bantuan_model->pekerjaan_tidak_layak($data->kondisi_pekerjaan);
-        $jamsostek_layak = $this->Penerima_bantuan_model->jamsostek_layak($data->jamsostek);
-        $jamsostek_tidak_layak = $this->Penerima_bantuan_model->jamsostek_tidak_layak($data->jamsostek);
+        $pekerjaan_layak = $this->Penerima_bantuan_model->pekerjaan_layak($data->pekerjaan_utama);
         $status_perkawinan_layak = $this->Penerima_bantuan_model->status_perkawinan_layak($data->status_perkawinan);
+        $gaji_layak = $this->Penerima_bantuan_model->hitung_gaji_layak($data->penghasilan);
+        $pendidikan_layak = $this->Penerima_bantuan_model->hitung_pendidikan_layak($data->pendidikan);
+        $jamsostek_layak = $this->Penerima_bantuan_model->jamsostek_layak($data->jamsostek);
+        $jamsoskes_layak = $this->Penerima_bantuan_model->jamsoskes_layak($data->jamsoskes);
 
       //TIDAK LAYAK
         $usia_tidak_layak = $this->Penerima_bantuan_model->usia_tidak_layak($data->usia);
+        $pekerjaan_tidak_layak = $this->Penerima_bantuan_model->pekerjaan_tidak_layak($data->pekerjaan_utama);
         $status_perkawinan_tidak_layak = $this->Penerima_bantuan_model->status_perkawinan_tidak_layak($data->status_perkawinan);
-        $gaji_layak = $this->Penerima_bantuan_model->hitung_gaji_layak($data->penghasilan);
         $gaji_tidak_layak = $this->Penerima_bantuan_model->hitung_gaji_layak($data->penghasilan);
-        $pendidikan_layak = $this->Penerima_bantuan_model->hitung_pendidikan_layak($data->pendidikan);
         $pendidikan_tidak_layak = $this->Penerima_bantuan_model->hitung_pendidikan_tidak_layak($data->pendidikan);
+        $jamsostek_tidak_layak = $this->Penerima_bantuan_model->jamsostek_tidak_layak($data->jamsostek);
+        $jamsoskes_tidak_layak = $this->Penerima_bantuan_model->jamsoskes_tidak_layak($data->jamsoskes);
 
       // perhitungan layak
         $p_usia_layak = number_format((int)$usia_layak->usia_layak/(int)$layak, 3);
@@ -137,7 +139,8 @@ class Penerima_bantuan extends CI_Controller
         $p_pekerjaan_layak = number_format((int)$pekerjaan_layak->jml_pekerjaan/(int)$layak, 3);
         $p_status_perkawinan_layak = number_format((int)$status_perkawinan_layak->perkawinan/(int)$layak, 3);
         $p_jamsostek_layak = number_format((int)$jamsostek_layak->jamsostek/(int)$layak, 3);
-        $p_layak_bantuan = $p_gajilayak*$p_usia_layak*$p_pendidikanlayak*$p_pekerjaan_layak*$p_status_perkawinan_layak*$p_jamsostek_layak*$p_layak;
+        $p_jamsoskes_layak = number_format((int)$jamsoskes_layak->jamsoskes/(int)$layak, 3);
+        $p_layak_bantuan = $p_gajilayak*$p_usia_layak*$p_pendidikanlayak*$p_pekerjaan_layak*$p_status_perkawinan_layak*$p_jamsostek_layak*$p_jamsoskes_layak*$p_layak;
 
       // perhitungan tidak layak
         $p_usia_tidak_layak = number_format((int)$usia_tidak_layak->usia_tidak_layak/(int)$layak, 3);
@@ -146,7 +149,8 @@ class Penerima_bantuan extends CI_Controller
         $p_pekerjaan_tidak_layak = number_format((int)$pekerjaan_tidak_layak->jml_pekerjaan/(int)$tidak_layak, 3);
         $p_status_perkawinan_tidak_layak = number_format((int)$status_perkawinan_tidak_layak->perkawinan/(int)$tidak_layak, 3);
         $p_jamsostek_tidak_layak = number_format((int)$jamsostek_tidak_layak->jamsostek/(int)$tidak_layak, 3);
-        $p_tidak_layak_bantuan = $p_gajitidaklayak*$p_usia_tidak_layak*$p_pendidikantidaklayak*$p_pekerjaan_tidak_layak*$p_status_perkawinan_tidak_layak*$p_jamsostek_tidak_layak*$p_tidaklayak;
+        $p_jamsoskes_tidak_layak = number_format((int)$jamsoskes_tidak_layak->jamsoskes/(int)$tidak_layak, 3);
+        $p_tidak_layak_bantuan = $p_gajitidaklayak*$p_usia_tidak_layak*$p_pendidikantidaklayak*$p_pekerjaan_tidak_layak*$p_status_perkawinan_tidak_layak*$p_jamsostek_tidak_layak*$p_jamsoskes_tidak_layak*$p_tidaklayak;
 
         if ($p_layak_bantuan > $p_tidak_layak_bantuan) {
           $status = 'Layak';

@@ -82,29 +82,69 @@ class Penerima_bantuan_model extends CI_Model
     function pekerjaan_layak($pekerjaan)
     {
         // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
-        $db = $this->db->query("SELECT count(*) as jml_pekerjaan FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.kondisi_pekerjaan = '$pekerjaan' AND data_training.status_kelayakan = 'Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        $db = $this->db->query("SELECT count(*) as jml_pekerjaan FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.pekerjaan_utama = '$pekerjaan' AND data_training.status_kelayakan = 'Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
         return $db;
     }
 
     function pekerjaan_tidak_layak($pekerjaan)
     {
         // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
-        $db = $this->db->query("SELECT count(*) as jml_pekerjaan FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.kondisi_pekerjaan = '$pekerjaan' AND data_training.status_kelayakan = 'Tidak Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        $db = $this->db->query("SELECT count(*) as jml_pekerjaan FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.pekerjaan_utama = '$pekerjaan' AND data_training.status_kelayakan = 'Tidak Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
         return $db;
     }
 
     function usia_layak($usia)
     {
-        // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
-        $db = $this->db->query("SELECT count(*) as usia_layak FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.usia = '$usia' AND data_training.status_kelayakan = 'Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
-        return $db;
+        $kat ="";
+        if ($usia > 45) {
+            $kat = "Tua";
+        }else if($usia >= 26 && $usia <= 45){
+            $kat = "Dewasa";
+        }else if($usia < 26){
+            $kat = "Remaja";
+        }
+        $q_layak = $this->db->query("SELECT count(*) as usia_layak FROM (
+            SELECT data_warga.usia,  data_training.status_kelayakan,
+            CASE
+            WHEN data_warga.usia > 45 THEN 'Tua'
+            WHEN data_warga.usia >= 26 AND data_warga.usia <= 45 THEN 'Dewasa'
+            WHEN data_warga.usia < 26 THEN 'Remaja'
+            ELSE ''
+            END AS c_usia
+            FROM data_training JOIN data_warga ON data_warga.no_kk = data_training.no_kk WHERE status_keluarga = 'Kepala Keluarga'
+            ) as conversi_usia  WHERE c_usia ='$kat' AND status_kelayakan = 'Layak'
+            ")->row();
+
+        return $q_layak;
+        // $db = $this->db->query("SELECT count(*) as usia_layak FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.usia = '$usia' AND data_training.status_kelayakan = 'Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        // return $db;
     }
 
     function usia_tidak_layak($usia)
     {
-        // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
-        $db = $this->db->query("SELECT count(*) as usia_tidak_layak FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.usia = '$usia' AND data_training.status_kelayakan = 'Tidak Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
-        return $db;
+        $kat ="";
+        if ($usia > 45) {
+            $kat = "Tua";
+        }else if($usia >= 26 && $usia <= 45){
+            $kat = "Dewasa";
+        }else if($usia < 26){
+            $kat = "Remaja";
+        }
+        $q_tidak_layak = $this->db->query("SELECT count(*) as usia_tidak_layak FROM (
+            SELECT data_warga.usia,  data_training.status_kelayakan,
+            CASE
+            WHEN data_warga.usia > 45 THEN 'Tua'
+            WHEN data_warga.usia >= 26 AND data_warga.usia <= 45 THEN 'Dewasa'
+            WHEN data_warga.usia < 26 THEN 'Remaja'
+            ELSE ''
+            END AS c_usia
+            FROM data_training JOIN data_warga ON data_warga.no_kk = data_training.no_kk WHERE status_keluarga = 'Kepala Keluarga'
+            ) as conversi_usia  WHERE c_usia ='$kat' AND status_kelayakan = 'Tidak Layak'
+            ")->row();
+
+        return $q_tidak_layak;
+        // $db = $this->db->query("SELECT count(*) as usia_tidak_layak FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.usia = '$usia' AND data_training.status_kelayakan = 'Tidak Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        // return $db;
     }
 
     function status_perkawinan_layak($perkawinan)
@@ -132,6 +172,20 @@ class Penerima_bantuan_model extends CI_Model
     {
         // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
         $db = $this->db->query("SELECT count(*) as jamsostek FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.jamsostek = '$jamsostek' AND data_training.status_kelayakan = 'Tidak Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        return $db;
+    }
+
+    function jamsoskes_layak($jamsoskes)
+    {
+        // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
+        $db = $this->db->query("SELECT count(*) as jamsoskes FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.jamsostek = '$jamsoskes' AND data_training.status_kelayakan = 'Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        return $db;
+    }
+
+    function jamsoskes_tidak_layak($jamsoskes)
+    {
+        // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
+        $db = $this->db->query("SELECT count(*) as jamsoskes FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.jamsoskes = '$jamsoskes' AND data_training.status_kelayakan = 'Tidak Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
         return $db;
     }
 

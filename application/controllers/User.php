@@ -55,16 +55,16 @@ class User extends CI_Controller
             $data = array(
                 'content' => 'user/user_read',
                 'title' => 'Data '.$row->username,
-		        'id_user' => $row->id_user,
-		        'username' => $row->username,
-		        'password' => $row->password,
-		        'email' => $row->email,
-		        'no_hp' => $row->no_hp,
-		        'no_kk' => $row->no_kk,
-		        'role' => $row->role,
-		        'date_created' => $row->date_created,
-		        'date_updated' => $row->date_updated,
-	        );
+                'id_user' => $row->id_user,
+                'username' => $row->username,
+                'password' => $row->password,
+                'email' => $row->email,
+                'no_hp' => $row->no_hp,
+                'no_kk' => $row->no_kk,
+                'role' => $row->role,
+                'date_created' => $row->date_created,
+                'date_updated' => $row->date_updated,
+            );
             $this->load->view('themes/content', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -88,6 +88,45 @@ class User extends CI_Controller
         }
     }
 
+    public function user_petugas()
+    {
+        $data_warga = $this->Data_warga_model->get_for_user();
+        $data = array(
+            'content' => 'user/petugas_form',
+            'title' => 'Tambah User Petugas',
+            'button' => 'Create',
+            'action' => site_url('user/process_user_petugas'),
+            'id_user' => set_value('id_user'),
+            'username' => set_value('username'),
+            'password' => set_value('password'),
+            'email' => set_value('email'),
+            'no_hp' => set_value('no_hp'),
+            'no_kk' => set_value('no_kk'),
+            'role' => set_value('role'),
+            'data_warga' => $data_warga,
+        );
+        $this->load->view('themes/content', $data);
+    }
+
+    public function process_user_petugas()
+    {
+
+        $data = array(
+            'username' => $this->input->post('username',TRUE),
+            'password' => sha1(md5($this->input->post('password',TRUE))),
+            'email' => $this->input->post('email',TRUE),
+            'no_hp' => $this->input->post('no_hp',TRUE),
+            'no_kk' => $this->input->post('no_kk',TRUE),
+            'role' => $this->input->post('role',TRUE),
+            'date_created' => date('Y-m-d'),
+            'date_updated' => date('Y-m-d'),
+        );
+        $this->User_model->insert_petugas($data);
+
+        $this->session->set_flashdata('message', 'Data Berhasil Dibuat');
+        redirect(site_url('user/petugas'));
+    }
+
     public function create() 
     {
         $data_warga = $this->Data_warga_model->get_for_user();
@@ -96,15 +135,15 @@ class User extends CI_Controller
             'action' => site_url('user/create_action'),
             'content' => 'user/user_form',
             'title' => 'Tambah Data User',
-	        'id_user' => set_value('id_user'),
-	        'username' => set_value('username'),
-	        'password' => set_value('password'),
-	        'email' => set_value('email'),
-	        'no_hp' => set_value('no_hp'),
-	        'no_kk' => set_value('no_kk'),
-	        'role' => set_value('role'),
+            'id_user' => set_value('id_user'),
+            'username' => set_value('username'),
+            'password' => set_value('password'),
+            'email' => set_value('email'),
+            'no_hp' => set_value('no_hp'),
+            'no_kk' => set_value('no_kk'),
+            'role' => set_value('role'),
             'data_warga' => $data_warga,
-	    );
+        );
         $this->load->view('themes/content', $data);
     }
     
@@ -116,15 +155,15 @@ class User extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'username' => $this->input->post('username',TRUE),
-		'password' => sha1(md5($this->input->post('password',TRUE))),
-		'email' => $this->input->post('email',TRUE),
-		'no_hp' => $this->input->post('no_hp',TRUE),
-		'no_kk' => $this->input->post('no_kk',TRUE),
-		'role' => $this->input->post('role',TRUE),
-		'date_created' => date('Y-m-d'),
-		'date_updated' => date('Y-m-d'),
-	    );
+              'username' => $this->input->post('username',TRUE),
+              'password' => sha1(md5($this->input->post('password',TRUE))),
+              'email' => $this->input->post('email',TRUE),
+              'no_hp' => $this->input->post('no_hp',TRUE),
+              'no_kk' => $this->input->post('no_kk',TRUE),
+              'role' => $this->input->post('role',TRUE),
+              'date_created' => date('Y-m-d'),
+              'date_updated' => date('Y-m-d'),
+          );
 
             $this->User_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -135,10 +174,16 @@ class User extends CI_Controller
     public function update($id) 
     {
         $row = $this->User_model->get_by_id($id);
+        $data_warga = $this->Data_warga_model->get_for_user();
 
         if ($row) {
+            if ($row->role != 'warga') {
+                $content = 'user/petugas_form';
+            } else {
+                $content = 'user/user_form';
+            }
             $data = array(
-                'content' => 'user/user_form',
+                'content' => $content,
                 'title' => 'Ubah Data '.$row->username,
                 'button' => 'Update',
                 'action' => site_url('user/update_action'),
@@ -149,7 +194,8 @@ class User extends CI_Controller
                 'no_hp' => set_value('no_hp', $row->no_hp),
                 'no_kk' => set_value('no_kk', $row->no_kk),
                 'role' => set_value('role', $row->role),
-	        );
+                'data_warga' => $data_warga,
+            );
             $this->load->view('themes/content', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -196,16 +242,16 @@ class User extends CI_Controller
 
     public function _rules() 
     {
-	$this->form_validation->set_rules('username', 'username', 'trim|required');
-	$this->form_validation->set_rules('password', 'password', 'trim|required');
-	$this->form_validation->set_rules('email', 'email', 'trim|required');
-	$this->form_validation->set_rules('no_hp', 'no hp', 'trim|required');
-	$this->form_validation->set_rules('no_kk', 'no kk', 'trim|required');
-	$this->form_validation->set_rules('role', 'role', 'trim|required');
+       $this->form_validation->set_rules('username', 'username', 'trim|required');
+       $this->form_validation->set_rules('password', 'password', 'trim|required');
+       $this->form_validation->set_rules('email', 'email', 'trim|required');
+       $this->form_validation->set_rules('no_hp', 'no hp', 'trim|required');
+       $this->form_validation->set_rules('no_kk', 'no kk', 'trim|required');
+       $this->form_validation->set_rules('role', 'role', 'trim|required');
 
-	$this->form_validation->set_rules('id_user', 'id_user', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
-    }
+       $this->form_validation->set_rules('id_user', 'id_user', 'trim');
+       $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+   }
 
 }
 

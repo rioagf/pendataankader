@@ -34,7 +34,7 @@ class Data_warga_model extends CI_Model
     function get_for_user()
     {
         $this->db->where('status_keluarga', 'kepala keluarga');
-        // $this->db->order_by($this->id, $this->order);
+        $this->db->order_by('rt', 'ASC');
         return $this->db->get('data_warga')->result();
     }
 

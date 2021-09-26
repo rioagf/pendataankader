@@ -100,6 +100,29 @@ class User_model extends CI_Model
         $this->db->insert($this->table, $data);
     }
 
+    // insert data
+    function insert_petugas($data)
+    {
+        $this->db->select('nama_lengkap');
+        $this->db->where('no_kk', $data['no_kk']);
+        $nama = $this->db->get('data_warga')->row();
+        // var_dump($nama->nama_lengkap);die();
+
+        $this->db->insert($this->table, $data);
+        $id_user = $this->db->insert_id();
+
+
+        $data2 = array(
+            'nama_petugas' => $nama->nama_lengkap,
+            'jabatan' => ucwords($this->input->post('role')),
+            'id_user' => $id_user,
+            'date_created' => date('Y-m-d'),
+            'date_updated' => date('Y-m-d'),
+        );
+        
+        $this->db->insert('data_petugas', $data2);
+    }
+
     // update data
     function update($id, $data)
     {

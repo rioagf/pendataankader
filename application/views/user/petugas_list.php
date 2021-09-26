@@ -9,7 +9,7 @@
                 echo '</div>';
             }
             ?>
-            <h2 class="text-center">Data User</h2>
+            <h2 class="text-center">Data Petugas</h2>
             <hr>
         </div>
         <div style="background-color: #ffffff !important; padding: 25px;">
@@ -54,13 +54,13 @@
                     </a>
                 </div>
                 <div class="col text-center" style="width: 33.3333%;">
-                    <a href="<?= base_url('user/create') ?>" style="color: rgb(255,255,255);">
+                    <a href="<?= base_url('user/user_petugas') ?>" style="color: rgb(255,255,255);">
                         <i class="fa fa-pencil-square-o" style="padding: 0;font-size: 26px;width: 100%;"></i>
                         <p style="margin-bottom: 0;">INPUT DATA</p>
                     </a>
                 </div>
                 <div class="col text-center" style="width: 33.3333%;">
-                    <a href="#" style="color: rgb(255,255,255);">
+                    <a href="<?= base_url('auth/logout') ?>" onclick="return confirm('Anda yakin mau Keluar ?')" style="color: rgb(255,255,255);">
                         <i class="fa fa-sign-out" style="padding: 0;font-size: 26px;width: 100%;"></i>
                         <p style="margin-bottom: 0;">LOGOUT</p>
                     </a>
