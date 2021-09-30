@@ -82,11 +82,25 @@ class Penerima_bantuan_model extends CI_Model
     function pekerjaan_layak($pekerjaan)
     {
         // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
-        $db = $this->db->query("SELECT count(*) as jml_pekerjaan FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.pekerjaan_utama = '$pekerjaan' AND data_training.status_kelayakan = 'Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        $db = $this->db->query("SELECT count(*) as jml_pekerjaan FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.kondisi_pekerjaan = '$pekerjaan' AND data_training.status_kelayakan = 'Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
         return $db;
     }
 
     function pekerjaan_tidak_layak($pekerjaan)
+    {
+        // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
+        $db = $this->db->query("SELECT count(*) as jml_pekerjaan FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.kondisi_pekerjaan = '$pekerjaan' AND data_training.status_kelayakan = 'Tidak Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        return $db;
+    }
+
+    function pekerjaan_utama_layak($pekerjaan)
+    {
+        // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
+        $db = $this->db->query("SELECT count(*) as jml_pekerjaan FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.pekerjaan_utama = '$pekerjaan' AND data_training.status_kelayakan = 'Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
+        return $db;
+    }
+
+    function pekerjaan_utama_tidak_layak($pekerjaan)
     {
         // $this->db->join('data_warga', 'data_warga.no_kk = desk_keluarga.no_kk');
         $db = $this->db->query("SELECT count(*) as jml_pekerjaan FROM data_warga JOIN data_training ON data_training.no_kk = data_warga.no_kk WHERE data_warga.pekerjaan_utama = '$pekerjaan' AND data_training.status_kelayakan = 'Tidak Layak' AND data_warga.status_keluarga = 'Kepala Keluarga'")->row();
@@ -289,6 +303,13 @@ class Penerima_bantuan_model extends CI_Model
     {
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
+    }
+
+    function date_list()
+    {
+        $this->db->select('tanggal_generate_penerima');
+        $this->db->group_by('tanggal_generate_penerima');
+        return $this->db->get('penerima_bantuan')->result();
     }
 
 }

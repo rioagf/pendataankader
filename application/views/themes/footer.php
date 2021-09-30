@@ -3,10 +3,26 @@
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.1.1/js/dataTables.dateTime.min.js"></script>
     <script>
     	$(document).ready( function () {
     		$('#table_data').DataTable();
     	} );
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+            function filterData () {
+                $('#example').DataTable().search(
+                    $('#tgl_laporan').val()
+                    ).draw();
+            }
+            $('#tgl_laporan').on('change', function () {
+                filterData();
+            });
+        });
     </script>
 
     <script type="text/javascript">

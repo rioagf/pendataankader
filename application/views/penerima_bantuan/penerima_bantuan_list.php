@@ -10,13 +10,28 @@
             }
             ?>
             <h2 class="text-center">Laporan Data Penerima Bantuan</h2>
-            <?php if ($this->session->userdata('role') == 'kader'): ?>
-                <a href="<?= base_url('penerima_bantuan/generate_data') ?>" onclick="return confirm('Anda yakin mau generate data ?')" class="btn btn-primary" type="button" style="background: rgba(0,123,255,0);color: rgb(0,0,0);border-radius: 0px;border-width: 0px;border-bottom-width: 1px;border-bottom-color: rgb(0,0,0);margin-bottom: 10px;">Generate Data</a>
-            <?php endif ?>
+            <div class="row">
+                <div class="col-6">
+                    <?php if ($this->session->userdata('role') == 'kader'): ?>
+                        <a href="<?= base_url('penerima_bantuan/generate_data') ?>" onclick="return confirm('Anda yakin mau generate data ?')" class="btn btn-primary" type="button" style="background: rgba(0,123,255,0);color: rgb(0,0,0);border-radius: 0px;border-width: 0px;border-bottom-width: 1px;border-bottom-color: rgb(0,0,0);margin-bottom: 10px;">Generate Data</a>
+                    <?php endif ?>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Pilih Tanggal</label>
+                        <select class="form-control" id="tgl_laporan" name="">
+                            <option>-- Pilih --</option>
+                            <?php foreach ($tanggal as $tanggal) { ?>
+                                <option value="<?= $tanggal->tanggal_generate_penerima ?>"><?= date('d F Y',strtotime($tanggal->tanggal_generate_penerima)) ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
             <hr>
         </div>
         <div style="background-color: #ffffff !important; padding: 25px;">
-            <table id="table_data" class="table table-striped table-bordered" style="margin-bottom: 10px">
+            <table id="example" class="table table-striped table-bordered" style="margin-bottom: 10px">
                 <thead>
                     <tr>
                         <tr>
@@ -40,7 +55,7 @@
                             <td><?php echo $penerima_bantuan->nama_penerima ?></td>
                             <td><?php echo $penerima_bantuan->rt ?></td>
                             <td><?php echo $penerima_bantuan->status ?></td>
-                            <td><?php echo date('d F Y', strtotime($penerima_bantuan->tanggal_generate_penerima)) ?></td>
+                            <td><?php echo $penerima_bantuan->tanggal_generate_penerima ?></td>
                             <td>
                                 <a class="btn btn-sm btn-primary" href="<?= site_url('penerima_bantuan/read/'.$penerima_bantuan->id_penerima) ?>"><i class="fa fa-book"></i></a>
                                 <?php if ($this->session->userdata('role') == 'kader') { ?>
