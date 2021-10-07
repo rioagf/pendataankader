@@ -224,7 +224,7 @@
             <hr>
         <?php } ?>
         <div class="row">
-            <div class="col-4" style="text-align: left;">
+            <div class="col-12 col-sm-4 col-md-4" style="text-align: left;">
                 <strong>No KK : <?= $profile->no_kk; ?></strong>
             </div>
             <div class="col-4">

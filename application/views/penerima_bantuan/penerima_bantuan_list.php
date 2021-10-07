@@ -30,7 +30,7 @@
             </div>
             <hr>
         </div>
-        <div style="background-color: #ffffff !important; padding: 25px;">
+        <div style="background-color: #ffffff !important; padding: 25px; overflow: auto;">
             <table id="example" class="table table-striped table-bordered" style="margin-bottom: 10px">
                 <thead>
                     <tr>

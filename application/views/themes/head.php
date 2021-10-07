@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title><?= $title; ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
@@ -21,6 +21,59 @@
     <style type="text/css">
         .form-control {
             border-radius: 0px !important;
+        }
+
+        .bttn-whatsapp {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            border-radius: 50%;
+            width: 65px; height: 65px;
+            font-size: 26pt
+        }
+
+        @media screen and (max-width: 480px){
+            .bttn-whatsapp {
+                position: fixed;
+                bottom: 100px;
+                right: 20px;
+                border-radius: 50%;
+                width: 45px; height: 45px;
+                font-size: 16pt
+            }
+        }
+
+        @media screen and (min-width: 1024px){
+            .bttn-whatsapp {
+                position: fixed;
+                bottom: 100px;
+                right: 20px;
+                border-radius: 50%;
+                width: 65px; height: 65px;
+                font-size: 24pt
+            }
+        }
+
+        @media screen and (min-width: 1350px){
+            .bttn-whatsapp {
+                position: fixed;
+                bottom: 100px;
+                right: 20px;
+                border-radius: 50%;
+                width: 75px; height: 75px;
+                font-size: 28pt
+            }
+        }
+
+        @media screen and (min-width: 2560px){
+            .bttn-whatsapp {
+                position: fixed;
+                bottom: 100px;
+                right: 20px;
+                border-radius: 50%;
+                width: 85px; height: 85px;
+                font-size: 32pt
+            }
         }
     </style>
 </head>

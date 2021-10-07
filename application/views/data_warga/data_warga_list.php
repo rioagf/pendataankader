@@ -12,7 +12,7 @@
             <h2 class="text-center">Data Warga</h2>
             <hr>
         </div>
-        <div style="background-color: #ffffff !important; padding: 25px;">
+        <div style="background-color: #ffffff !important; padding: 25px; overflow: auto;">
             <table id="table_data" class="table table-striped table-bordered" style="margin-bottom: 10px">
                 <thead>
                     <tr>

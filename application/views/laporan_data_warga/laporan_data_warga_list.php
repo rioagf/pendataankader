@@ -1,5 +1,5 @@
-<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('assets/img/8.jpg');background-size: cover; background-attachment: fixed; padding: 75px;">
-    <div class="container" style="max-width: 850px;">
+<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('assets/img/8.jpg');background-size: cover; background-attachment: fixed; padding: 75px 10px;">
+    <div class="container" style="max-width: 1350px;">
         <div class="intro">
             <?php 
             if($this->session->flashdata('message') !='')
@@ -15,7 +15,7 @@
             <?php endif ?>
             <hr>
         </div>
-        <div style="background-color: #ffffff !important; padding: 25px;">
+        <div style="background-color: #ffffff !important; padding: 25px; overflow: auto;">
             <table id="table_data" class="table table-striped table-bordered" style="margin-bottom: 10px">
                 <thead>
                     <tr>

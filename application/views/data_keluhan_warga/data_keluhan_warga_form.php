@@ -1,5 +1,5 @@
-<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('../assets/img/8.jpg');background-size: cover; background-attachment: fixed; padding: 75px;">
-    <div class="container" style="max-width: 850px;">
+<section class="d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center features-boxed" style="min-height: 100vh;background: url('../assets/img/8.jpg');background-size: cover; background-attachment: fixed; padding: 75px 15px;">
+    <div class="container" style="max-width: 1350px;">
         <div class="intro">
             <h2 class="text-center">Lapor Keluhan</h2>
             <hr>
