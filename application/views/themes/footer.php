@@ -1,5 +1,5 @@
     <?php if ($this->session->userdata('role') != 'administrator' && $this->session->userdata('role') != 'rw' ): ?>
-        <a href="https://wa.me/6283140610636" class="btn btn-success bttn-whatsapp"><i class="fa fa-whatsapp"></i></a>
+        <a href="https://api.whatsapp.com/send/?phone=6283140610636" class="btn btn-success bttn-whatsapp"><i class="fa fa-whatsapp"></i></a>
     <?php endif ?>
     <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
     <script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
