@@ -208,7 +208,7 @@ class Data_warga extends CI_Controller
 
 		$this->Desk_keluarga_model->insert($data);
 
-		$this->session->set_flashdata('message', 'Create Record Success');
+		$this->session->set_flashdata('message', 'Berhasil menambahkan data');
 		redirect(site_url('data_warga'));
 	}
 
@@ -374,6 +374,126 @@ class Data_warga extends CI_Controller
 
 		// $this->form_validation->set_rules('id_data_warga', 'id_data_warga', 'trim');
 		// $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+	}
+
+	public function update_data($nik) 
+	{
+
+			// tanggal lahir
+			$tanggal = new DateTime($this->input->post('tanggal_lahir',TRUE));
+			// tanggal hari ini
+			$today = new DateTime('today');
+			// tahun
+			$y = $today->diff($tanggal)->y;
+		$data = array(
+			'no_kk' => $this->input->post('no_kk',TRUE),
+			'nik' => $this->input->post('nik',TRUE),
+			'nama_lengkap' => $this->input->post('nama_lengkap',TRUE),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin',TRUE),
+			'tempat_lahir' => $this->input->post('tempat_lahir',TRUE),
+			'tanggal_lahir' => $this->input->post('tanggal_lahir',TRUE),
+			'usia' => $y,
+			'status_perkawinan' => $this->input->post('status_perkawinan',TRUE),
+			'agama' => $this->input->post('agama',TRUE),
+			'warganegara' => $this->input->post('warganegara',TRUE),
+			'pendidikan' => $this->input->post('pendidikan',TRUE),
+			'kondisi_pekerjaan' => $this->input->post('kondisi_pekerjaan',TRUE),
+			'pekerjaan_utama' => $this->input->post('pekerjaan_utama',TRUE),
+			'jamsostek' => $this->input->post('jamsostek',TRUE),
+			'penghasilan' => $this->input->post('penghasilan',TRUE),
+			'jamsoskes' => $this->input->post('jamsoskes',TRUE),
+			'rt' => $this->input->post('rt',TRUE),
+			'status_keluarga' => $this->input->post('status_keluarga',TRUE),
+			'date_updated' => date('Y-m-d'),
+		);
+
+		$this->Data_warga_model->update_warga($this->input->post('nik', TRUE), $data);
+		$this->session->set_flashdata('message', 'Update Data Sukses');
+		redirect(site_url('user/profile/'.$this->input->post('no_kk')));
+	}
+
+	public function update_detail($nik) 
+	{
+		$data = array(
+			'tempat_tinggal' => $this->input->post('tempat_tinggal',TRUE),
+			'status_lahan' => $this->input->post('status_lahan',TRUE),
+			'luas_lantai' => $this->input->post('luas_lantai',TRUE),
+			'luas_lahan' => $this->input->post('luas_lahan',TRUE),
+			'jenis_lantai' => $this->input->post('jenis_lantai',TRUE),
+			'dinding' => $this->input->post('dinding',TRUE),
+			'jendela' => $this->input->post('jendela',TRUE),
+			'genteng' => $this->input->post('genteng',TRUE),
+			'penerangan' => $this->input->post('penerangan',TRUE),
+			'energi_memasak' => $this->input->post('energi_memasak',TRUE),
+			'tps' => $this->input->post('tps',TRUE),
+			'mck' => $this->input->post('mck',TRUE),
+			'sumber_airmandi' => $this->input->post('sumber_airmandi',TRUE),
+			'fasilitas_bab' => $this->input->post('fasilitas_bab',TRUE),
+			'sumber_airminum' => $this->input->post('sumber_airminum',TRUE),
+			'pembuangan_limbah' => $this->input->post('pembuangan_limbah',TRUE),
+			'bawah_sutet' => $this->input->post('bawah_sutet',TRUE),
+			'bantaran_sungai' => $this->input->post('bantaran_sungai',TRUE),
+			'lerang' => $this->input->post('lerang',TRUE),
+			'kondisi_rumah' => $this->input->post('kondisi_rumah',TRUE),
+			'date_updated' => date('Y-m-d'),
+		);
+
+		$this->Data_warga_model->update_detail($this->input->post('no_kk', TRUE), $data);
+		$this->session->set_flashdata('message', 'Update Data Sukses');
+		redirect(site_url('user/profile/'.$this->input->post('no_kk')));
+	}
+
+	public function tambah_warga() 
+	{
+			// tanggal lahir
+			$tanggal = new DateTime($this->input->post('tanggal_lahir',TRUE));
+			// tanggal hari ini
+			$today = new DateTime('today');
+			// tahun
+			$y = $today->diff($tanggal)->y;
+			// var_dump($y);die();
+			$new_add = array(
+				'no_kk' => $this->input->post('no_kk',TRUE),
+				'nik' => $this->input->post('nik',TRUE),
+				'nama_lengkap' => $this->input->post('nama_lengkap',TRUE),
+				'jenis_kelamin' => $this->input->post('jenis_kelamin',TRUE),
+				'tempat_lahir' => $this->input->post('tempat_lahir',TRUE),
+				'tanggal_lahir' => $this->input->post('tanggal_lahir',TRUE),
+				'usia' => $y,
+				'status_perkawinan' => $this->input->post('status_perkawinan',TRUE),
+				'agama' => $this->input->post('agama',TRUE),
+				'warganegara' => $this->input->post('warganegara',TRUE),
+				'pendidikan' => $this->input->post('pendidikan',TRUE),
+				'kondisi_pekerjaan' => $this->input->post('kondisi_pekerjaan',TRUE),
+				'pekerjaan_utama' => $this->input->post('pekerjaan_utama',TRUE),
+				'jamsostek' => $this->input->post('jamsostek',TRUE),
+				'penghasilan' => $this->input->post('penghasilan',TRUE),
+				'jamsoskes' => $this->input->post('jamsoskes',TRUE),
+				'rt' => $this->input->post('rt',TRUE),
+				'status_keluarga' => $this->input->post('status_keluarga',TRUE),
+				'date_created' => date('Y-m-d'),
+				'date_updated' => date('Y-m-d'),
+				'id_user' => $this->session->userdata('id_user'),
+			);
+
+		$this->Data_warga_model->tambah_data_warga($new_add);
+
+		$this->session->set_flashdata('message', 'Berhasil menambah data');
+		redirect(site_url('user/profile/'.$this->input->post('no_kk')));
+	}
+
+	public function delete_warga($nik) 
+	{
+		$row = $this->Data_warga_model->get_by_nik($nik);
+
+		if ($row) {
+			$this->Data_warga_model->delete_nik($nik);
+			$this->session->set_flashdata('success', 'Data Berhasil di Hapus');
+			redirect(site_url('user/profile/'.$this->input->post('no_kk')));
+		} else {
+			$this->session->set_flashdata('error', 'Data tidak ditemukan');
+			redirect(site_url('user/profile/'.$this->input->post('no_kk')));
+		}
 	}
 
 }

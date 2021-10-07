@@ -60,6 +60,8 @@ class User_model extends CI_Model
     {
         $this->db->join('data_warga', 'data_warga.no_kk = user.no_kk');
         $this->db->where('user.no_kk', $nokk);
+        $this->db->group_by('data_warga.nik');
+        $this->db->order_by('data_warga.usia', 'DESC');
         return $this->db->get($this->table)->result();
     }
     

@@ -115,11 +115,29 @@ class Data_warga_model extends CI_Model
         $this->db->insert_batch($this->table, $data);
     }
 
+    // insert data
+    function tambah_data_warga($data)
+    {
+        $this->db->insert($this->table, $data);
+    }
+
     // update data
     function update($id, $data)
     {
         $this->db->where($this->id, $id);
         $this->db->update($this->table, $data);
+    }
+
+    function update_warga($nik, $data)
+    {
+        $this->db->where('nik', $nik);
+        $this->db->update('data_warga', $data);
+    }
+
+    function update_detail($no_kk, $data)
+    {
+        $this->db->where('no_kk', $no_kk);
+        $this->db->update('desk_keluarga', $data);
     }
 
     // delete data
@@ -130,6 +148,11 @@ class Data_warga_model extends CI_Model
         $this->db->delete(array($this->table,'desk_keluarga'));
     }
 
+    function get_by_nik($nik)
+    {
+        $this->db->where('data_warga.nik', $nik);
+        $this->db->delete('data_warga');
+    }
 
 
 }
